@@ -1,0 +1,102 @@
+[
+  {
+    "question": "What is the Italian word for pie?",
+    "answers": ["Pizza"]
+  },
+  {
+    "question": "Which country does the sport of pelato come from?",
+    "answers": ["Spain"]
+  },
+  {
+    "question": "Name the port of Rome",
+    "answers": ["Ostia"]
+  },
+  {
+    "question": "What was Louis Armstrong's chosen form of music?",
+    "answers": ["Jazz"]
+  },
+  {
+    "question": "What is one quarter of 1,000? ",
+    "answers": ["250", "two hundreds fifty", "two-hundreds-fifty"]
+  },
+  {
+    "question": "Which is larger 50% or five eights?",
+    "answers": ["five eights", "5x8", "five 8"]
+  },
+  {
+    "question": "When did the French Revolution end?",
+    "answers": ["1799", "in 1799"]
+  },
+  {
+    "question": "Which ocean surrounds the Maldives?",
+    "answers": ["Indian", "indian ocean", "ocean indian"]
+  },
+  {
+    "question": "Who was the lover of the Roman known as Marc Anthony?",
+    "answers": ["Cleopatra"]
+  },
+  {
+    "question": "Which word can be placed before bottle, bell and bird?",
+    "answers": ["Blue"]
+  },
+  {
+    "question": "What happened to the racehorse named Shergar in 1983?",
+    "answers": ["Kidnap", "kidnapped", "kidnaps", "was kidnapped", "got kidnapped"]
+  },
+  {
+    "question": "Name the doctor played by Tom Baker, William Hartnell and Patrick Troughton, among others.",
+    "answers": ["Dr. who", "dr who", "doctor who", "who", "doctor. who", "doc. who", "doc who"]
+  },
+  {
+    "question": "Which Russian town suffered an infamous nuclear disaster in 1986?",
+    "answers": ["Chernobyl"]
+  },
+  {
+    "question": "Which planet shares its name with a dog?",
+    "answers": ["Pluto"]
+  },
+  {
+    "question": "In women's gymnastics, what is 6ft. 6\" long?",
+    "answers": ["Beam"]
+  },
+  {
+    "question": "Name the Chinese writer, born in 551 BCE, known for preaching high moral standards",
+    "answers": ["Confucious", "Confucius"]
+  },
+  {
+    "question": "Name the fictional character whose household duties did not prevent her determination to dance",
+    "answers": ["Cinderella"]
+  },
+  {
+    "question": "Usually partnered with milk, but sometimes also with jam and custard, name this yellow-gold dry food",
+    "answers": ["Cornflakes"]
+  },
+  {
+    "question": "Available in many sizes and styles, and able to halt at many train-free stations, what am I?",
+    "answers": ["Radio", "a radio"]
+  },
+  {
+    "question": "Name this stringless fictional character created by Carlo Collodi over one hundred years ago",
+    "answers": ["Pinocchio"]
+  },
+  {
+    "question": "Which English national park is associated with poets and an illustrator of small animals? ",
+    "answers": ["Lake District", "district"]
+  },
+  {
+    "question": "Which London square is famous–or infamous–for its pigeon population? ",
+    "answers": ["Trafalgar Square", "Trafalgar"]
+  },
+  {
+    "question": "Which frequently-used household item has a tree but no leaves?",
+    "answers": ["Mug", "Cup"]
+  },
+  {
+    "question": "I have a cake and a table named after me, and I'm used all round the world. What am I?",
+    "answers": ["Coffee"]
+  },
+  {
+    "question": "I'm called thick when close to the ground, but people smile when I'm high. What am I?",
+    "answers": ["Cloud", "a cloud"]
+  }
+]
