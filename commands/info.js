@@ -7,7 +7,7 @@ exports.run = (client, message, args) => {
         '\n> dice rolls (>dice "number of sides")' +
         '\n> premium system is done' +
         '\n> `>mute, >unmute, >muterole` commands added' +
-        '\n> added the `>help [command] thingy to some of commands' +
+        '\n> added the `>help [command]` thingy to some of commands' +
         '\n> added the `>flex` command to joke on your non-nitro friends <:pepevil:587587126577725440>' +
         '\n> added the `>addrole`, `>removerole` commands ***yay***' +
         '\n> added the `>count` command, its amazing!' +
