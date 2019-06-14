@@ -53,7 +53,8 @@ client.on('ready', async() => {  // when bot is ready
         g.fetchInvites().then(guildInvites => {
             invites[g.id] = guildInvites;
         });
-    });
+    })
+        .catch(() => {})
     sleep(1000)
 });
 
@@ -76,7 +77,7 @@ client.on('message', async(message) => { //when message received
         'If You Continue Pinging This Might Cause A Mute Or A Ban Thanks```');
     message.react('579347864556142593')}
 
-    if(message.content.includes('<@!579715446123790366>')) {message.reply(`Current prefix on this guild is \`${prefix}\``)}
+    if(message.content.includes('<@!579715446123790366>') || message.content.includes("<@579715446123790366>")) {message.reply(`Current prefix on this guild is \`${prefix}\``)}
 
     if(message.content.toLowerCase().includes('my 18+ photos') || message.content.toLowerCase().includes('my naked photos')) {
         if(message.channel.id !== '579615725002424322') return;
