@@ -22,7 +22,7 @@ exports.run = async(client, message, args) => {
     }
     if (user === message.author) return message.reply('You can\'t ban yourself');
     if (!message.guild.member(user).bannable) return message.reply('You can\'t ban this user!');
-    if(message.member.highestRole.comparePositionTo(user1.highestRole < 0)) return message.channel.send('<:cross:584800355951443968> lmfao dont try to ban person with ur role or above u');
+    if(message.member.highestRole.comparePositionTo(user1.highestRole) < 1) return message.channel.send('<:cross:584800355951443968> lmfao dont try to ban person with ur role or above u');
 
     await client.users.get(user.id).send(`You were banned in ${message.guild.name} for: ${banReason}`)
 
