@@ -1,7 +1,8 @@
 const discord = require('discord.js');
 exports.run = async(client, message, args) => {
     const user = message.mentions.users.first();
-    const banReason = args.slice(1).join(' ');
+    let banReason = args.slice(1).join(' ');
+    if(!banReason) banReason = 'No reason given.'
     let embed = new discord.RichEmbed()
         .setColor('#ff0000')
         .setTitle('Oops!')
@@ -20,14 +21,17 @@ exports.run = async(client, message, args) => {
         }
     }
     if (user === message.author) return message.reply('You can\'t ban yourself');
-    if (!banReason) return message.reply('You forgot to enter a reason for this ban!');
     if (!message.guild.member(user).bannable) return message.reply('You can\'t ban this user!');
+    if(message.member.highestRole.comparePositionTo(user1.highestRole < 0)) return message.channel.send('<:cross:584800355951443968> lmfao dont try to ban person with ur role or above u');
+
+    await client.users.get(user.id).send(`You were banned in ${message.guild.name} for: ${banReason}`)
 
     await message.guild.ban(user);
 
     const banConfirmationEmbed = new discord.RichEmbed()
         .setColor('RED')
-        .setDescription(`🔨 ${user.tag} has been successfully banned!`);
+        .setDescription(`🔨 ${user.tag} has been successfully banned!`)
+        .addField('Reason:', `${banReason}`);
     message.channel.send({embed: banConfirmationEmbed});
 
 };

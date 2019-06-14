@@ -12,6 +12,7 @@ exports.run = (client, message, args) => {
     if(!message.member.hasPermission('MANAGE_CHANNELS')) return message.channel.send(embed);
     if(isNaN(mr) || mr === undefined) return message.channel.send('<:cross:584800355951443968> Oops, it seems like this server has no mute role set. Set one using >muterole');
     if(!args[0]) return message.reply("aye but enter user to mute");
+    if(message.member.highestRole.comparePositionTo(message.guild.members.get(message.mentions.users.first().id).highestRole) < 0) return message.channel.send('<:cross:584800355951443968> lmfao dont try to mute person with ur role or above u');
     message.guild.members.get(message.mentions.users.first().id).addRole(mr)
         .then(() => { message.channel.send(`<:tick:584800524000296971> Successfully muted ${message.mentions.users.first().tag}`)})
         .catch(() => {message.channel.send('Couldn\'t mute this user!')})

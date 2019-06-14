@@ -1,20 +1,19 @@
 exports.run = (client, message, args) => {
     const emb = require('discord.js').RichEmbed;
     const embed = new emb()
-        .setTitle('Current version 1.0.2')
-        .setDescription('Version 1.0.2 =>' +
-        '\n**yay my owner lazebones finally did something**' +
-        '\n> dice rolls (>dice "number of sides")' +
-        '\n> premium system is done' +
-        '\n> `>mute, >unmute, >muterole` commands added' +
-        '\n> added the `>help [command]` thingy to some of commands' +
-        '\n> added the `>flex` command to joke on your non-nitro friends <:pepevil:587587126577725440>' +
-        '\n> added the `>addrole`, `>removerole` commands ***yay***' +
-        '\n> added the `>count` command, its amazing!' +
-        '\n> small things for zroll official' +
-        '\n> more advanced the `>userinfo` command' +
-        '\n> woooosh' +
-        '\n> Siiiiimon saaaays system! ***aye dont try to use it it can only be used by me (beta test)*** <:Xd:588473272124047370>')
+        .setTitle('Current version 1.0.3')
+        .setDescription('Version 1.0.3 =>' +
+        '\n**ok this update is more fix than more content addition**' +
+        '\n> the `>mute` command now cannot mute person who has same highest role as you, or above' +
+        '\n> the `>addrole` and `>removerole` commands now can be used only by people with manage roles permission (duh)' +
+        '\n> the `>ban` command cannot ban user whos highest role is above or equal your, but better not to test Bianca' +
+        '\n> ^ same with `>kick`' +
+        '\n> `>kick` command now dms user with reason why he was kicked' +
+        '\n> ^ same with `>ban`' +
+        '\n> `>ban` now shows also why user was banned with reason in chat, not just "tag was successfully banned"' +
+        '\n> ^ same with `>kick`' +
+        '\n> fixed when sometimes user join, this embed in welcome doesnt appearing, because bot cant get how many times invite was used' +
+        '\ny u read this')
         .setColor('#477383');
     message.channel.send(embed)
 };

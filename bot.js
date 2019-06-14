@@ -362,6 +362,7 @@ client.on('guildMemberAdd', async(member) => {
         if(dif < 86400000) {
             client.channels.get('570597613762641945').send(`${member.user.tag} (user ID ${member.user.id}) just joined (probability of alt, created less than 1 day ago). Invited by ${inviter.tag}`)
         };
+        if(invite.uses === undefined || isNaN(invite.uses)) invite.uses = 'unknown'
         const joinemb = new Discord.RichEmbed()
             .setTitle("New member")
             .setDescription(`${member.user.tag} just joined. Invited by ${inviter.tag}. This invite was used ${invite.uses} times.`)

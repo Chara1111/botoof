@@ -1,7 +1,8 @@
 const discord = require('discord.js');
-exports.run = (client, message, args) => {
+exports.run = async (client, message, args) => {
     const user = message.mentions.users.first();
-    const banReason = args.slice(1).join(' ');
+    let banReason = args.slice(1).join(' ');
+    if(!banReason) banReason = 'No reason given';
     let embed = new discord.RichEmbed()
         .setColor('#ff0000')
         .setTitle('Oops!')
@@ -16,14 +17,17 @@ exports.run = (client, message, args) => {
         }
     }
     if (user === message.author) return message.reply('You can\'t kick yourself');
-    if (!banReason) return message.reply('You forgot to enter a reason for this kick!');
     if (!message.guild.member(user).bannable) return message.reply('You can\'t kick this user!');
+    if(message.member.highestRole.comparePositionTo(message.guild.members.get(user.id).highestRole < 0)) return message.channel.send('<:cross:584800355951443968> lmfao dont try to kick person with ur role or above u');
 
-    message.guild.member(user).kick(banReason);
+    await client.users.get(user.id).send(`You were kicked from ${message.guild.name} for: ${banReason}`);
+
+    await message.guild.member(user).kick(banReason);
 
     const banConfirmationEmbed = new discord.RichEmbed()
         .setColor('RED')
-        .setDescription(`💔 ${user.tag} has been successfully kicked!`);
+        .setDescription(`💔 ${user.tag} has been successfully kicked!`)
+        .addField('Reason:', `${banReason}`);
     message.channel.send({embed: banConfirmationEmbed});
 
 };
