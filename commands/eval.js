@@ -1,6 +1,6 @@
 const ownerid = require('../configs/auth.json').ownerID;
 exports.run = (client, message, args) => {
-    if(message.author.id !== ownerid) return message.channel.send('Oops, this command is only for developer!');
+    if(message.author.id !== '589033173065924611') return message.channel.send('Oops, this command is only for developer!');
     function clean(text) {
         if (typeof(text) === "string")
             return text.replace(/`/g, "`" + String.fromCharCode(8203)).replace(/@/g, "@" + String.fromCharCode(8203));
