@@ -406,4 +406,4 @@ client.on('guildMemberAdd', async(member) => {
     channel.send(`Welcome to the server!`, attachment);
 });
 
-client.login('NTc5NzE1NDQ2MTIzNzkwMzY2.XQKYwQ.f0Fom9Ap5bkFXQPqvFGiIyjyBK8');
+client.login(process.env.BOT_TOKEN);
