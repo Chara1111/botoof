@@ -6,6 +6,7 @@ const queue = new Map();
 
 
 exports.run = async(client, message, args) => {
+    let msg = message;
     async function handleVideo(video, msg, voiceChannel, playlist = false) {
         const serverQueue = queue.get(msg.guild.id);
         console.log(video);
