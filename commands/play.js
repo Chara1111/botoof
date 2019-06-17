@@ -7,6 +7,29 @@ const queue = new Map();
 
 exports.run = async(client, message, args) => {
     let msg = message;
+    function play(guild, song) {
+        const serverQueue = queue.get(guild.id);
+
+        if (!song) {
+            serverQueue.voiceChannel.leave();
+            queue.delete(guild.id);
+            return;
+        }
+        console.log(serverQueue.songs);
+
+        const dispatcher = serverQueue.connection.playStream(ytdl(song.url))
+            .on('end', reason => {
+                if (reason === 'Stream is not generating quickly enough.') console.log('Song ended.');
+                else console.log(reason);
+                serverQueue.songs.shift();
+                play(guild, serverQueue.songs[0]);
+            })
+            .on('error', error => console.error(error));
+        dispatcher.setVolumeLogarithmic(serverQueue.volume / 5);
+
+        serverQueue.textChannel.send(`🎶 Start playing: **${song.title}**`);
+    }
+
     async function handleVideo(video, msg, voiceChannel, playlist = false) {
         const serverQueue = queue.get(msg.guild.id);
         console.log(video);
@@ -45,32 +68,6 @@ exports.run = async(client, message, args) => {
         }
         return undefined;
     }
-
-    function play(guild, song) {
-        const serverQueue = queue.get(guild.id);
-
-        if (!song) {
-            serverQueue.voiceChannel.leave();
-            queue.delete(guild.id);
-            return;
-        }
-        console.log(serverQueue.songs);
-
-        const dispatcher = serverQueue.connection.playStream(ytdl(song.url))
-            .on('end', reason => {
-                if (reason === 'Stream is not generating quickly enough.') console.log('Song ended.');
-                else console.log(reason);
-                serverQueue.songs.shift();
-                play(guild, serverQueue.songs[0]);
-            })
-            .on('error', error => console.error(error));
-        dispatcher.setVolumeLogarithmic(serverQueue.volume / 5);
-
-        serverQueue.textChannel.send(`🎶 Start playing: **${song.title}**`);
-    }
-
-
-
     const searchString = args.slice(1).join(' ');
     const url = args[1] ? args[1].replace(/<(.+)>/g, '$1') : '';
     const serverQueue = queue.get(message.guild.id);
