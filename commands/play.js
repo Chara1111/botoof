@@ -72,7 +72,7 @@ exports.run = async(client, message, args) => {
 
     const searchString = args.slice(1).join(' ');
     const url = args[1] ? args[1].replace(/<(.+)>/g, '$1') : '';
-    const serverQueue = queue.get(msg.guild.id);
+    const serverQueue = queue.get(message.guild.id);
 
     const voiceChannel = msg.member.voiceChannel;
     if (!voiceChannel) return msg.channel.send('I\'m sorry but you need to be in a voice channel to play music!');
