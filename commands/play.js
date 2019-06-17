@@ -40,6 +40,7 @@ const serverQueue = queue.get(message.guild.id);
             title: songInfo.title,
             url: songInfo.video_url,
         };
+        console.log('debug: song: ' + song);
 
         if (!serverQueue) {
             const queueContruct = {
