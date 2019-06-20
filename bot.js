@@ -78,7 +78,7 @@ client.on('message', async(message) => { //when message received
     if(auth.ownerID !== message.author.id && force) return message.channel.send('Bot is currently running in developer mode. Only developer can use bot commands. Please be patient.');
 
     else if (cmd === 'ss') {
-        if (auth.ownerID !== sender.id || sender.id !== '437629779982942210') return;
+        if (auth.ownerID !== sender.id && sender.id !== '437629779982942210') return;
         let file = require(`./minigames/simon says/main.js`);
         file.run(client, message, args)
     }

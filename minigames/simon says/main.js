@@ -32,6 +32,7 @@ exports.run = async(client, message, args) => {
     // The random things part
 
     if(args[0] === 'random') {
+        message.delete()
         args.shift();
         let cmdfile = require('./random.js');
             await cmdfile.run(client, message, args, alive, dead, playingid, lostid)
@@ -40,6 +41,7 @@ exports.run = async(client, message, args) => {
     // revive
 
     if(args[0] === 'revive') {
+        message.delete()
         let player = message.mentions.users.first().id;
         player = message.guild.members.get(player);
         await player.addRole(message.guild.roles.get(playingid), 'Simon Says revived!');
@@ -50,6 +52,7 @@ exports.run = async(client, message, args) => {
     //kill
 
     if(args[0] === 'kill') {
+        message.delete()
         let player = message.mentions.users.first().id;
         player = message.guild.members.get(player);
         await player.addRole(message.guild.roles.get(lostid), 'Simon Says lost!');
@@ -60,6 +63,7 @@ exports.run = async(client, message, args) => {
     //list of survivors
 
     if(args[0] === 'alive') {
+        message.delete()
         let msg = `The __${alive.length}__ survivors are: `;
         for(let i = 0; i<alive.length; i++) {
             msg += `<@!${alive[i]}> `
@@ -70,12 +74,14 @@ exports.run = async(client, message, args) => {
     //lock chat
 
     if(args[0] === 'lock') {
+        message.delete()
         close(message, playingid)
     }
 
     //open chat
 
     if(args[0] === 'open') {
+        message.delete()
         open(message, playingid)
     }
 
@@ -86,6 +92,7 @@ exports.run = async(client, message, args) => {
     // Below does something
 
     if(args[0] === 'below') {
+        message.delete()
         args.shift();
         require('./below').run(client, message, args, playingid, lostid)
     }
@@ -93,6 +100,7 @@ exports.run = async(client, message, args) => {
     // fake chat
 
     if(args[0] === 'fakechat') {
+        message.delete()
         let choices = ['Siimon', 'S!mon', 'Siman', 'Sim0n', '5imon'];
         let name = choices[Math.floor(Math.random()*choices.length)];
         let tbh = false
@@ -125,6 +133,7 @@ exports.run = async(client, message, args) => {
     // real chat
 
     if(args[0] === 'realchat') {
+        message.delete()
         message.channel.send('Simon Says talk in chat. You have 20 seconds')
         let dtalk = alive;
         setTimeout(async () => {
@@ -146,6 +155,7 @@ exports.run = async(client, message, args) => {
     // roulette
 
     if(args[0] === 'roulette') {
+        message.delete()
         message.channel.send(`**Roulette**
 *everyone will roll a number from 1 to 100 and the biggest one will get something*
 --------------------------------------`)
