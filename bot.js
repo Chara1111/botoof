@@ -3,7 +3,6 @@ const Canvas                  = require('canvas');
 const client                  = new Discord.Client();
 const auth                    = require('./configs/auth.json');
 const invites                 = {};
-const statuses = ['Update v1.0.4!', 'Contest ended...', `${client.users.size} users`];
 
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
@@ -31,7 +30,9 @@ client.on('ready', async() => {  // when bot is ready
     });
     sleep(1000);
 
-    setInterval(async function() {await client.user.setActivity(`${statuses[Math.floor(Math.random() * statuses.length)]}`, {type: "WATCHING"})}, 10000)
+    setInterval(async function() {
+        const statuses = ['Update v1.0.4!', 'Contest ended...', `${client.users.size} users`];
+        await client.user.setActivity(`${statuses[Math.floor(Math.random() * statuses.length)]}`, {type: "WATCHING"})}, 10000)
 
     setInterval(function() {const channel = client.channels.get('579591616071729162');
     channel.send(`Weekly activity check (it may be really not weekly cuz bot restarting frequently
