@@ -86,7 +86,6 @@ exports.run = async(client, message, args) => {
     // Below does something
 
     if(args[0] === 'below') {
-        args.shift();
         require('./below').run(client, message, args, playingid, lostid)
     }
 
@@ -105,7 +104,7 @@ exports.run = async(client, message, args) => {
                 let player = message.guild.members.get(talked[i])
                 await player.addRole(message.guild.roles.get(lostid), 'Simon Says lost!');
                 await player.removeRole(message.guild.roles.get(playingid), 'Simon Says lost!');
-                message.channel.send(`<@!${player.id}> you lost, good luck next time, but don't quit, you can be revived!`)
+                await message.channel.send(`<@!${player.id}> you lost, good luck next time, but don't quit, you can be revived!`)
             }
         }, 20000)
 
