@@ -5,6 +5,7 @@ exports.run = async(client, message, args) => {
     totalSeconds %= 3600;
     let minutes = Math.floor(totalSeconds / 60);
     let seconds = totalSeconds % 60;
+    seconds = Math.floor(seconds);
     let uptime = `${days} days, ${hours} hours, ${minutes} minutes and ${seconds} seconds`;
 
     let embed = require('discord.js').RichEmbed;
