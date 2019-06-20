@@ -75,7 +75,7 @@ client.on('message', async(message) => { //when message received
 
     if (!message.content.startsWith(prefix)) return; // if start without prefix - ignore
 
-    if(auth.ownerID !== message.author.id || message.author.id !== 'zrul id' && force) return message.channel.send('Bot is currently running in developer mode. Only developer can use bot commands. Please be patient.');
+    if(auth.ownerID !== message.author.id && force) return message.channel.send('Bot is currently running in developer mode. Only developer can use bot commands. Please be patient.');
 
     else if (cmd === 'ss') {
         if (auth.ownerID !== sender.id || sender.id !== '437629779982942210') return;
