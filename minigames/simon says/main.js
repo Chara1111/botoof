@@ -22,8 +22,8 @@ function sleep(ms) {
 
 exports.run = async(client, message, args) => {
     let time = new Set()
-    let playingid = '586266894286454800';
-    let lostid = '586266886938034259';
+    let playingid = '577829135729164299';
+    let lostid = '577829651158663198';
     message.delete();
     let alive = message.guild.roles.get(playingid).members.map(m=>m.user.id);
     let dead = message.guild.roles.get(lostid).members.map(m=>m.user.id);
