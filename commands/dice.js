@@ -1,9 +1,12 @@
 const emb = require('discord.js').RichEmbed;
 
 exports.run = (client, message, args) => {
-    if(Number(args[0]) === undefined || isNaN(Number(args[0]))) return message.channel.send('Please enter valid number of sides to roll dice.')
+    if(Number(args[0]) === undefined || isNaN(Number(args[0]))) return message.channel.send('Please enter valid whole number of sides which is greater than zero to roll dice.');
+    let sides = Number(args[0]);
+    if(sides % 1 !== 0) return message.channel.send('Please enter the whole number.');
+    if(sides < 1) return message.channel.send('Please enter number greater than zero.');
 
-    let rolled = Math.floor(Math.random() * (Number(args[0]) + 1));
+    let rolled = Math.floor(Math.random() * (sides + 1));
     const embed = new emb()
         .setTitle('Dice roll!')
         .setDescription('You rolled number ' + rolled.toString())

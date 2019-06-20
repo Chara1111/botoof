@@ -1,7 +1,8 @@
 exports.run = async(client, message, args) => {
     let countfrom = args[0];
-    if(countfrom === undefined || isNaN(countfrom)) countfrom = 60;
+    if(Number(countfrom) === undefined || isNaN(Number(countfrom))) countfrom = 60;
     countfrom = Number(countfrom);
+    if(countfrom > 86400) return message.reply('Number of seconds should be less than 86400 (one day)');
     function sleep(ms) {
         return new Promise(resolve => setTimeout(resolve, ms));
     }

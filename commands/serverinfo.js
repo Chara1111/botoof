@@ -1,9 +1,7 @@
 const discord = require('discord.js');
-const fs = require('fs');
 
 exports.run = (client, message, args) => {
     let srv = message.guild;
-    let goal = JSON.parse(fs.readFileSync("./configs/goals.json", "utf8"))[message.guild.id].members;
     const embed = new discord.RichEmbed()
         .setThumbnail(message.guild.iconURL)
         .setTitle('Server info')
@@ -17,7 +15,7 @@ exports.run = (client, message, args) => {
         .addField('Default message notifications', srv.defaultMessageNotifications)
         .addField('Server ID', srv.id)
         .addField('Is server large? (having more than 250 members)', srv.large)
-        .addField('Member goal', `${srv.memberCount}` + '/' + goal)
+        .addField('Member count', srv.memberCount)
         .addField('System messages channel', srv.systemChannel);
     message.channel.send(embed)
 };
