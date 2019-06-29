@@ -35,7 +35,8 @@ exports.run = async(client, message, args) => {
 
                 let wonusers = [];
                 for(let i=0; i<winners; i++) {
-                    wonusers.push('<@!' +reacted[Math.floor(Math.random() * reacted.array().length)].id + '>')
+                    console.log(reacted[Math.floor(Math.random() * reacted.array().length)])
+                    //wonusers.push('<@!' + reacted[Math.floor(Math.random() * reacted.array().length)] + '>')
                 }
 
                 let won = wonusers.join(', ');
