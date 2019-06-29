@@ -1,4 +1,6 @@
 exports.run = (client, message, args) => {
+    if(!message.member.roles.get('579343749893586950')) return message.reply('smh you cant use this command bcuz u need staff team role')
+
     const embed = require('discord.js').RichEmbed;
     const ping = new embed()
         .setTitle(':tada:')
