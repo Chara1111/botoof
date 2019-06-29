@@ -34,7 +34,7 @@ exports.run = async(client, message, args) => {
                 let reacted = msg.reactions.get("🎉").users;
                 let wonusers = [];
                 for(let i=0; i<winners; i++) {
-                    console.log(reacted[Math.floor(Math.random() * reacted.size)])
+                    message.channel.send(reacted)
                     //wonusers.push('<@!' + reacted[Math.floor(Math.random() * reacted.array().length)] + '>')
                 }
 
