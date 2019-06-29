@@ -31,13 +31,12 @@ exports.run = async(client, message, args) => {
         await message.channel.send(giveaway).then(async msg => {
             await msg.react('🎉');
             setTimeout(async function() {
-                let reacted = msg.reactions.filter(rx => rx.emoji.name === '🎉').first().users;
+                let reacted = msg.reactions.filter(rx => rx.emoji.name === '🎉').first().users.array()
                 let wonusers = [];
                 for(let i=0; i<winners; i++) {
-                    let user = reacted[Math.floor(Math.random() * reacted.length)];
-                    console.log(user)
-                    let id = user.id;
-                    wonusers.push('<@!' + id + '>')
+                    let id = reacted[Math.floor(Math.random() * reacted.length)];
+                    console.log(id);
+                    wonusers.push('<@!' + id.id + '>')
                 }
 
                 let won = wonusers.join(', ');
