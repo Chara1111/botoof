@@ -33,9 +33,12 @@ exports.run = async(client, message, args) => {
             setTimeout(async function() {
                 let reacted = msg.reactions.filter(rx => rx.emoji.name === '🎉').first().users.array()
                 let wonusers = [];
+
                 for(let i=0; i<winners; i++) {
                     let id = reacted[Math.floor(Math.random() * reacted.length)];
                     console.log(id);
+
+                    if(id.id === client.me.id) return;
                     wonusers.push('<@!' + id.id + '>')
                 }
 
