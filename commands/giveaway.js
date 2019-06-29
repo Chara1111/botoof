@@ -38,7 +38,7 @@ exports.run = async(client, message, args) => {
                 for(let i=0; i<winners; i++) {
                     let id = reacted[Math.floor(Math.random() * reacted.length)];
 
-                    if(id.id === client.me.user.id) return;
+                    if(id.id === '579715446123790366') return;
                     wonusers.push('<@!' + id.id + '>')
                 }
 
