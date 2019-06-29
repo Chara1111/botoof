@@ -35,6 +35,7 @@ exports.run = async(client, message, args) => {
                 let wonusers = [];
                 for(let i=0; i<winners; i++) {
                     let user = reacted[Math.floor(Math.random() * reacted.length)];
+                    console.log(user)
                     let id = user.id;
                     wonusers.push('<@!' + id + '>')
                 }
