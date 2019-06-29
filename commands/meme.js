@@ -16,8 +16,7 @@ exports.run = async (client, message, args) => {
             .setTitle(allowed[randomnumber].data.title)
             .setImage(allowed[randomnumber].data.url)
             .setURL(allowed[randomnumber].data.url)
-            .setDescription( "⬆ " + allowed[randomnumber].data.ups + " 🗨 " + allowed[randomnumber].data.num_comments)
-            .setFooter("Memes provided by r/" + sub);
+            .setFooter("⬆ " + allowed[randomnumber].data.ups + " 🗨 " + allowed[randomnumber].data.num_comments);
         message.channel.send(embed)
     } catch (err) {
         return console.log(err);

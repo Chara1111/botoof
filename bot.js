@@ -3,6 +3,7 @@ const Canvas                  = require('canvas');
 const client                  = new Discord.Client();
 const auth                    = require('./configs/auth.json');
 const invites                 = {};
+const automod = require('./automod');
 
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
@@ -20,6 +21,8 @@ client.on('ready', async() => {  // when bot is ready
 
     console.log(`Logged in as ${client.user.tag}! Developer mode: ${force}`);
 
+    automod.ready(client);
+
     await client.user.setActivity(`${client.users.size} users`, {type: "WATCHING"});  // rich presence
 
     client.guilds.forEach(g => {
@@ -31,14 +34,14 @@ client.on('ready', async() => {  // when bot is ready
     sleep(1000);
 
     setInterval(async function() {
-        const statuses = ['Update v1.0.4!', 'Contest ended...', `${client.users.size} users`];
-        await client.user.setActivity(`${statuses[Math.floor(Math.random() * statuses.length)]}`, {type: "WATCHING"})}, 10000)
+        const statuses = ['Update v1.0.5!', 'smh i added automod and giveaways', `${client.users.size} users`];
+        await client.user.setActivity(`${statuses[Math.floor(Math.random() * statuses.length)]}`, {type: "WATCHING"})}, 10000);
 
     setInterval(function() {const channel = client.channels.get('579591616071729162');
-    channel.send(`Weekly activity check (it may be really not weekly cuz bot restarting frequently
-React to <:pepeOK:587586401000751125> to confirm you are active.`).then(msg => {
-    msg.react('587586401000751125')
-    })}, 604800000)
+    channel.send(`Daily activity check
+React to <:pepeOK:587586401000751125> to confirm you are active.`).then(async msg => {
+        await msg.react('587586401000751125')
+    })}, 86400000)
 });
 
 client.on('message', async(message) => { //when message received
@@ -54,30 +57,28 @@ client.on('message', async(message) => { //when message received
 
     if(sender.bot) return; // if bot, ignore
 
-    if(message.content.includes('<@!437629779982942210>' || '<@437629779982942210>')) {message.channel.send('```Please Dont Ping Zroll For No Specific Reason\n' +
+    let swears = automod.badwords;
+
+    for(let i=0; i<swears.length; i++) {
+        if(message.content.toLowerCase().includes(swears[i])) {
+            await automod.swear(client, message, swears[i])
+        }
+    }
+
+    if(message.content.includes('<@!437629779982942210>' || message.content.includes('<@437629779982942210>'))) {message.channel.send('```Please Dont Ping Zroll For No Specific Reason\n' +
         '-----------------------------------------\n' +
         'If You Continue Pinging This Might Cause A Mute Or A Ban Thanks```');
     await message.react('579347864556142593')}
 
     if(message.content.includes('<@!579715446123790366>') || message.content.includes("<@579715446123790366>")) {message.reply(`Current prefix is \`>\``)}
 
-    if(message.content.toLowerCase().includes('my 18+ photos') || message.content.toLowerCase().includes('my naked photos')) {
-        if(message.channel.id !== '579615725002424322') return;
-        await message.delete()
-            .catch(() => {});
-        await client.users.get(message.member.id).send('ay listen little piece of shit, if you gonna continue i will find u. also if ya want to know, me (bot) auto ban u, u have no way so better stop\n\n\n\n\n\n\nget noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob get noob').catch(() => {});
-        await message.member.ban('Auto bot detector.');
-        let mainchat = client.channels.get('570597613762641945');
-        await mainchat.send(`${message.author.tag} was auto-banned cuz of nsfw and bot. (duh) <a:ajesus:582566348207554571>`)
-    }
-
-    if(message.channel.id === '579615725002424322' && message.content !== '!verify') return message.delete();
+    if(message.channel.id === '579615725002424322' && message.content !== '!verify ' ) return message.delete();
 
     if (!message.content.startsWith(prefix)) return; // if start without prefix - ignore
 
     if(auth.ownerID !== message.author.id && force) return message.channel.send('Bot is currently running in developer mode. Only developer can use bot commands. Please be patient.');
 
-    else if (cmd === 'ss') {
+    if (cmd === 'ss') {
         if (auth.ownerID !== sender.id && sender.id !== '437629779982942210') return;
         let file = require(`./minigames/simon says/main.js`);
         file.run(client, message, args)
@@ -162,7 +163,7 @@ client.on('guildMemberRemove', async(member) => {
     const emb = new Discord.RichEmbed()
         .setTitle('Member left 😦')
         .setColor('#bf0000')
-        .setDescription(`We just lost ${member.tag}. We now have ${member.guild.memberCount} members.`)
+        .setDescription(`We just lost ${member.user.tag}. We now have ${member.guild.memberCount} members.`)
         .setFooter('bot made by dank_meme#0001');
     channel.send(emb)
 });
