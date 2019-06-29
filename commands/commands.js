@@ -1,10 +1,8 @@
-let fs = require('fs');
-let prefixes = JSON.parse(fs.readFileSync("./configs/prefixes.json", "utf8"));
 let discord = require('discord.js');
 
 exports.run = (client, message, args) => {
     message.channel.send("WARNING, this menu is being reworked soon, I am not longer working on **this** version so some commands can be missing.")
-    let pr = prefixes[message.guild.id].prefixes;
+    let pr = '>';
     const embed = new discord.RichEmbed()
         .setTitle('Please choose the category for commands.')
         .addField('🔨 Staff Commands', `\`${pr}commands mod\``)
@@ -20,7 +18,6 @@ exports.run = (client, message, args) => {
             .setColor('#387248')
             .setFooter('bot created by dank_meme#0001')
             .setDescription('<> - required, [] - optional')
-            .addField(`${pr}welmsg <#channel id>`, 'Set welcome channel')
             .addField(`${pr}ban <@mention/user id> <reason>`, 'Bans specified person for given reason. Need ban members permission.')
             .addField(`${pr}kick <@mention/user id> <reason>`, 'Kicks specified person for given reason. Need kick members permission.')
             .addField(`${pr}announce <announcement text>`, 'Announce something in current channel. Need manage messages permission.')
