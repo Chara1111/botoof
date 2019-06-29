@@ -30,9 +30,9 @@ exports.run = async(client, message, args) => {
 
         await message.channel.send(giveaway).then(async msg => {
             await msg.react('🎉');
-            let reacted = msg.reactions.get("🎉");
-            message.channel.send(reacted)
             setTimeout(async function() {
+                let reacted = msg.reactions.get("🎉").users;
+                message.channel.send(reacted)
                 let wonusers = [];
                 for(let i=0; i<winners; i++) {
                     //wonusers.push('<@!' + reacted[Math.floor(Math.random() * reacted.array().length)] + '>')
