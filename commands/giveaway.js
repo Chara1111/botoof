@@ -32,7 +32,6 @@ exports.run = async(client, message, args) => {
             await msg.react('🎉');
             setTimeout(async function() {
                 let reacted = msg.reactions.get("🎉").users;
-
                 let wonusers = [];
                 for(let i=0; i<winners; i++) {
                     console.log(reacted[Math.floor(Math.random() * reacted.array().length)])
