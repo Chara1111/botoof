@@ -7,7 +7,8 @@ exports.run = (client, message, args) => {
         '\n> thanks everyone who paid respects to currency using `>f` command' +
         '\n> added automod' +
         '\n> added giveaways 🎉' +
-        '\n> hopefully those things above good working')
+        '\n> hopefully those things above good working' +
+        '\n> added `>gp` command to do cool giveaway ping :cool: <:awoo:594258019433578508>')
         .setColor('#477383');
     message.channel.send(embed)
 };
