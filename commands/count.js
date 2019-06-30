@@ -33,7 +33,8 @@ Count is in server \`${client.guilds.get(cache.count.guild).name}\`, channel <#$
                 await msg.edit(e);
                 await sleep(1000)
             }
-            msg.delete()
+            msg.delete();
+            cache.count.active = false
         })
 };
 exports.help = {
