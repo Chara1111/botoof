@@ -60,6 +60,10 @@ exports.run = async(client, message, args) => {
     if(!args[0]) return message.reply(usage);
     if(args[0] !== 'start' && args[0] !== 'pattern') return message.reply(usage);
 
+
+    message.delete();
+
+
     if(args[0] === 'pattern') {
         if(args[1] !== 'start') return message.reply(usage);
         else if(args[1] === 'start') {
