@@ -5,6 +5,7 @@ exports.run = (client, message, args) => {
         .setDescription('Version 1.0.5 =>' +
         '\n**ok**' +
         '\n> thanks everyone who paid respects to currency using `>f` command' +
+        '\n> now you pay respects to RoDog, because he was demoted :( or be beaned'+
         '\n> added automod' +
         '\n> added giveaways 🎉' +
         '\n> hopefully those things above good working' +
