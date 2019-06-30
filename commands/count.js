@@ -34,7 +34,8 @@ Count is in server \`${client.guilds.get(cache.count.guild).name}\`, channel <#$
                 await sleep(1000)
             }
             msg.delete();
-            cache.count.active = false
+            cache.count.active = false;
+            fs.writeFile("./cache.json", JSON.stringify(cache), (err) => {if (err) console.log(err)});
         })
 };
 exports.help = {
