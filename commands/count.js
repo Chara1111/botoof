@@ -24,7 +24,7 @@ Count is in server \`${client.guilds.get(cache.count.guild).name}\`, channel <#$
     cache.count.time = countfrom;
     cache.count.user = message.author.tag;
 
-    fs.writeFile("../cache.json", JSON.stringify(cache), (err) => {if (err) console.log(err)});
+    fs.writeFile("./cache.json", JSON.stringify(cache), (err) => {if (err) console.log(err)});
 
     message.channel.send(e)
         .then(async(msg) => {
