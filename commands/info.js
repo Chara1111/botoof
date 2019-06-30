@@ -9,7 +9,8 @@ exports.run = (client, message, args) => {
         '\n> added automod' +
         '\n> added giveaways 🎉' +
         '\n> hopefully those things above good working' +
-        '\n> added `>gp` command to do cool giveaway ping :cool: <:awoo:594258019433578508>')
+        '\n> added `>gp` command to do cool giveaway ping :cool: <:awoo:594258019433578508>' +
+        '\n> added limit to use commands (you now need to wait 1.5 seconds between using commands) :cool:')
         .setColor('#477383');
     message.channel.send(embed)
 };

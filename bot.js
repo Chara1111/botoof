@@ -4,6 +4,7 @@ const client                  = new Discord.Client();
 const auth                    = require('./configs/auth.json');
 const invites                 = {};
 const automod = require('./automod');
+const limited = new Set()
 
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
@@ -77,6 +78,14 @@ client.on('message', async(message) => { //when message received
     if (!message.content.startsWith(prefix)) return; // if start without prefix - ignore
 
     if(auth.ownerID !== message.author.id && force) return message.channel.send('Bot is currently running in developer mode. Only developer can use bot commands. Please be patient.');
+
+    if(limited.has(message.author.id)) return message.reply('You are being rate limited. Bot commands can be used once per 1.5 seconds.');
+
+    limited.add(message.author.id);
+
+    setTimeout(function() {
+        limited.delete(message.author.id)
+    }, 1500);
 
     if (cmd === 'ss') {
         if (auth.ownerID !== sender.id && sender.id !== '437629779982942210') return;
