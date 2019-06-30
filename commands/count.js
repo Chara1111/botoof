@@ -1,7 +1,7 @@
 const fs = require('fs');
 
 exports.run = async(client, message, args) => {
-    let cache = JSON.parse(fs.readFileSync("../cache.json", "utf8"));
+    let cache = JSON.parse(fs.readFileSync("./cache.json", "utf8"));
     if(cache.count.active) return message.reply(`There is already active count! Some information:
 Count is in server \`${client.guilds.get(cache.count.guild).name}\`, channel <#${cache.count.channel}>. Time was set is ${cache.count.time}. User who called the command is ${cache.count.user}`);
 
