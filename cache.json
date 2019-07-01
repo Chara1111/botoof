@@ -1,9 +1,18 @@
 {
   "count": {
     "active": false,
-    "guild": "",
-    "channel": "",
-    "time": "",
-    "user": ""
+    "guild": "guild id",
+    "channel": "channel id",
+    "time": "time for count",
+    "user": "user who called"
+  },
+  "giveaway": {
+    "active": false,
+    "guild": "guild id",
+    "channel": "channel id",
+    "time": "hours",
+    "item": "item to win",
+    "mid": "message id",
+    "winners": "amount of winners"
   }
 }
