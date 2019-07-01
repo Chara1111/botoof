@@ -1,7 +1,7 @@
 exports.run = async(client, message, args) => {
     if(!message.member.roles.get('579343749893586950')) return message.reply('smh you cant use this command bcuz u need staff team role');
 
-    let role = client.roles.get('580863005294723072');
+    let role = message.guild.roles.get('580863005294723072');
 
     await role.edit({ mentionable: true });
 
