@@ -8,7 +8,7 @@ exports.swear = async(client, message, badword) => {
 
     await message.reply('Watch your language!');
 
-    if(badword === 'nigg' || badword === 'niger') {
+    if(badword === 'nigg') {
         message.member.ban('said n word').catch(() => {
             console.log('Cannot ban ' + message.author.tag + ' for saying n word')
         })
@@ -17,4 +17,4 @@ exports.swear = async(client, message, badword) => {
     await message.delete();
 };
 
-exports.badwords = ['bitch', 'dick', 'cock', 'fuck', 'fuсk', 'b1tch', 'c0ck', 'nigg', 'niger', 'niga', 'asshole', 'assh0le', 'blowjob', 'bl0wjob'];
+exports.badwords = ['bitch', 'dick', 'cock', 'fuck', 'fuсk', 'b1tch', 'c0ck', 'nigg', 'asshole', 'assh0le', 'blowjob', 'bl0wjob', 'asshole'];
