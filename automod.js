@@ -8,7 +8,7 @@ exports.swear = async(client, message, badword) => {
 
     await message.reply('Watch your language!');
 
-    if(badword === 'nigg' || badword === 'niga' || badword === 'niger') {
+    if(badword === 'nigg' || badword === 'niger') {
         message.member.ban('said n word').catch(() => {
             console.log('Cannot ban ' + message.author.tag + ' for saying n word')
         })
