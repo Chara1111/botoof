@@ -11,7 +11,7 @@ exports.run = async(client, message, args) => {
         .setDescription('New giveaway has started! Don\'t forget to join it! To get <@&580863005294723072> role visit <#570608694308372510>.')
         .setFooter('owo')
         .setColor('#4764fa');
-    message.channel.send('<@&580863005294723072>', ping);
+    await message.channel.send('<@&580863005294723072>', ping);
 
     await role.edit({ mentionable: false })
 
