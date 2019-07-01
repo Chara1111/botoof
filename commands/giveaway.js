@@ -12,8 +12,8 @@ exports.run = async(client, message, args) => {
         .setColor('#ff0000')
         .setTitle('Oops!')
         .setFooter('bot created by dank_meme#0001')
-        .setDescription('<:cross:584800355951443968> To start giveaways, you need manage channels permission!');
-    if(!message.member.hasPermission("MANAGE_CHANNELS") && message.member.roles.get('')) return message.channel.send(fail);
+        .setDescription('<:cross:584800355951443968> To start giveaways, you need manage channels permission, be staff, or have Giveaways role!');
+    if(!message.member.hasPermission("MANAGE_CHANNELS") && !message.member.roles.get('582542821123293194') && !message.member.roles.get('584860556381519876')) return message.channel.send(fail);
 
     let cache = JSON.parse(fs.readFileSync("./cache.json", "utf8"));
 
