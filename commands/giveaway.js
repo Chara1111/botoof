@@ -1,4 +1,4 @@
-exports.run = async(client, message, args) => {
+exports.run = (client, message, args) => {
     const fs = require('fs');
     const embed = require('discord.js').RichEmbed;
     //the usage
@@ -105,7 +105,7 @@ exports.run = async(client, message, args) => {
         args.shift();
         args.shift();
         let item = args.join(' ');
-        await gstart(hours, winners, item)
+        gstart(hours, winners, item)
 
     }
 
