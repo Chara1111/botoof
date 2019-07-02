@@ -46,7 +46,7 @@ exports.run = async(client, message, args) => {
             .setFooter('Good luck, react to 🎉 to participate.');
 
         await message.channel.send(giveaway).then(async msg => {
-            fillcache(true, message.guild.id, message.channel.id, hours, item, msg.id, winners);
+            fillcache(true, message.guild.id, message.channel.id, hours, item, msg, winners);
             await msg.react('🎉');
 
             setTimeout(async function() {
@@ -118,7 +118,7 @@ exports.run = async(client, message, args) => {
         let channel = guild.channels.get(cache.giveaway.channel);
         if(!channel) return;
 
-        let gmsg = channel.fetchMessage(cache.giveaway.mid);
+        let gmsg = cache.giveaway.mid;
         if(!gmsg) return;
 
         let winners = cache.giveaway.winners;
