@@ -1,4 +1,5 @@
 exports.run = async(client, message, args) => {
+    const fs = require('fs')
     const embed = require('discord.js').RichEmbed;
     //the usage
     const usage = new embed()
