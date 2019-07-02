@@ -1,5 +1,5 @@
 exports.run = async(client, message, args) => {
-    const fs = require('fs')
+    const fs = require('fs');
     const embed = require('discord.js').RichEmbed;
     //the usage
     const usage = new embed()
@@ -32,7 +32,7 @@ exports.run = async(client, message, args) => {
         cache.giveaway.mid = mid;
         cache.giveaway.winners = wnrs;
 
-        fs.writeFile("./cache.json", JSON.stringify(cache), (err) => {if (err) console.log(err)});
+        fs.writeFile("./cache.json", JSON.stringify(cache));
     }
 
     //start function
@@ -122,7 +122,7 @@ exports.run = async(client, message, args) => {
         let item = cache.giveaway.item;
 
 
-        fillcache(false, "guild id", "channel id", "hours", "item to win", "message id", "amount of winners");
+
 
         let reacted = gmsg.reactions.filter(rx => rx.emoji.name === '🎉').first().users.array();
         let wonusers = [];
@@ -144,6 +144,8 @@ exports.run = async(client, message, args) => {
         await gmsg.edit(ended);
 
         gmsg.channel.send('Congratulations, ' + won + ', you won ' + item)
+
+        fillcache(false, "guild id", "channel id", "hours", "item to win", "message id", "amount of winners");
     }
 
     else return message.reply(usage)
