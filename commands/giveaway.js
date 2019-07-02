@@ -23,7 +23,7 @@ exports.run = async(client, message, args) => {
 
     //fill cache function
 
-    async function fillcache(active, gid, chid, hours, item, mid, wnrs) {
+    function fillcache(active, gid, chid, hours, item, mid, wnrs) {
         cache.giveaway.active = active;
         cache.giveaway.guild = gid;
         cache.giveaway.channel = chid;
@@ -46,13 +46,13 @@ exports.run = async(client, message, args) => {
             .setFooter('Good luck, react to 🎉 to participate.');
 
         await message.channel.send(giveaway).then(async msg => {
-            await fillcache(true, message.guild.id, message.channel.id, hours, item, msg.id, winners);
+            fillcache(true, message.guild.id, message.channel.id, hours, item, msg.id, winners);
             await msg.react('🎉');
 
             setTimeout(async function() {
                 if(!cache.giveaway.active) return;
 
-                await fillcache(false, "guild id", "channel id", "hours", "item to win", "message id", "amount of winners");
+                fillcache(false, "guild id", "channel id", "hours", "item to win", "message id", "amount of winners");
 
                 let reacted = msg.reactions.filter(rx => rx.emoji.name === '🎉').first().users.array();
                 let wonusers = [];
@@ -122,7 +122,7 @@ exports.run = async(client, message, args) => {
         let item = cache.giveaway.item;
 
 
-        await fillcache(false, "guild id", "channel id", "hours", "item to win", "message id", "amount of winners");
+        fillcache(false, "guild id", "channel id", "hours", "item to win", "message id", "amount of winners");
 
         let reacted = gmsg.reactions.filter(rx => rx.emoji.name === '🎉').first().users.array();
         let wonusers = [];
