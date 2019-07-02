@@ -32,7 +32,7 @@ exports.run = async(client, message, args) => {
         cache.giveaway.mid = mid;
         cache.giveaway.winners = wnrs;
 
-        await fs.writeFile("./cache.json", JSON.stringify(cache), (err) => {if (err) console.log(err)});
+        fs.writeFile("./cache.json", JSON.stringify(cache), (err) => {if (err) console.log(err)});
     }
 
     //start function
