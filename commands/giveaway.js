@@ -46,7 +46,7 @@ exports.run = async(client, message, args) => {
             .setFooter('Good luck, react to 🎉 to participate.');
 
         await message.channel.send(giveaway).then(async msg => {
-            fillcache(true, message.guild.id, message.channel.id, hours, item, msg, winners);
+            fillcache(true, message.guild.id, message.channel.id, hours, item, msg.id, winners);
             await msg.react('🎉');
 
             setTimeout(async function() {
@@ -112,19 +112,14 @@ exports.run = async(client, message, args) => {
     else if(args[0] === 'end') {
         if(!cache.giveaway.active) return message.reply("There is no currently running giveaway.");
 
-        let guild = client.guilds.get(cache.giveaway.guild);
-        if(!guild) return;
-
-        let channel = guild.channels.get(cache.giveaway.channel);
+        let channel = client.channels.get(cache.giveaway.channel);
         if(!channel) return;
-
-        let gmsg = cache.giveaway.mid;
-        if(!gmsg) return;
 
         let winners = cache.giveaway.winners;
         let item = cache.giveaway.item;
 
-        console.log(gmsg);
+        let gimsg = channel.fetchMessage(cache.giveaway.mid).then(async gmsg => {
+
         let reacted = gmsg.reactions.filter(rx => rx.emoji.name === '🎉').first().users.array();
         let wonusers = [];
 
@@ -147,7 +142,7 @@ exports.run = async(client, message, args) => {
         gmsg.channel.send('Congratulations, ' + won + ', you won ' + item);
 
         fillcache(false, "guild id", "channel id", "hours", "item to win", "message id", "amount of winners");
-    }
+    })}
 
     else return message.reply(usage)
 };
