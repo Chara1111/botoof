@@ -121,9 +121,7 @@ exports.run = async(client, message, args) => {
         let winners = cache.giveaway.winners;
         let item = cache.giveaway.item;
 
-
-
-
+        console.log(gmsg);
         let reacted = gmsg.reactions.filter(rx => rx.emoji.name === '🎉').first().users.array();
         let wonusers = [];
 
@@ -143,7 +141,7 @@ exports.run = async(client, message, args) => {
             .setFooter('Good luck next time!');
         await gmsg.edit(ended);
 
-        gmsg.channel.send('Congratulations, ' + won + ', you won ' + item)
+        gmsg.channel.send('Congratulations, ' + won + ', you won ' + item);
 
         fillcache(false, "guild id", "channel id", "hours", "item to win", "message id", "amount of winners");
     }
