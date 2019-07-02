@@ -112,7 +112,10 @@ exports.run = async(client, message, args) => {
     else if(args[0] === 'end') {
         if(!cache.giveaway.active) return message.reply("There is no currently running giveaway.");
 
-        let channel = client.channels.get(cache.giveaway.channel);
+        let guild = client.guilds.get(cache.giveaway.guild);
+        if(!guild) return;
+
+        let channel = guild.channels.get(cache.giveaway.channel);
         if(!channel) return;
 
         let gmsg = channel.fetchMessage(cache.giveaway.mid);
