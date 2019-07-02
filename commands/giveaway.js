@@ -18,8 +18,7 @@ exports.run = async(client, message, args) => {
 
     let cache = JSON.parse(fs.readFileSync("./cache.json", "utf8"));
 
-    if(cache.giveaway.active) return message.reply(`There is already active giveaway there! It is in guild \`${client.guilds.get(cache.giveaway.guild).name}\`, channel <#${cache.giveaway.channel}>. Time was set is ${cache.giveaway.time} hours. Item to giveaway was \`${cache.giveaway.item}\` with ${cache.giveaway.winners} winners`);
-    //patterns
+        //patterns
     let patterns = {'hourly500': {'time': 1, 'item': '500 hourly dank memer coins', 'winners': 1}};
 
     //fill cache function
@@ -86,6 +85,7 @@ exports.run = async(client, message, args) => {
 
 
     if(args[0] === 'pattern') {
+        if(cache.giveaway.active) return message.reply(`There is already active giveaway there! It is in guild \`${client.guilds.get(cache.giveaway.guild).name}\`, channel <#${cache.giveaway.channel}>. Time was set is ${cache.giveaway.time} hours. Item to giveaway was \`${cache.giveaway.item}\` with ${cache.giveaway.winners} winners`);
         if(args[1] !== 'start') return message.reply(usage);
         else if(args[1] === 'start') {
             let name = args[2];
@@ -95,6 +95,7 @@ exports.run = async(client, message, args) => {
     }
 
     else if(args[0] === 'start') {
+        if(cache.giveaway.active) return message.reply(`There is already active giveaway there! It is in guild \`${client.guilds.get(cache.giveaway.guild).name}\`, channel <#${cache.giveaway.channel}>. Time was set is ${cache.giveaway.time} hours. Item to giveaway was \`${cache.giveaway.item}\` with ${cache.giveaway.winners} winners`);
         if(!args[3]) return message.reply(usage);
         if(Number(args[1]) === undefined || isNaN(Number(args[1]))) return message.reply('Please use number as amount of hours!');
         if(Number(args[2]) === undefined || isNaN(Number(args[2]))) return message.reply('Please use number as amount of winners!');
