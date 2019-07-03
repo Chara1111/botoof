@@ -107,7 +107,7 @@ client.on('message', async(message) => { //when message received
 client.on('guildMemberAdd', async(member) => {
     if(member.guild.id !== '570577194783604736') return;
 
-    const channel = member.guild.channels.get('570577195223875595');
+    const channel = member.guild.channels.get('594518913170145280');
 
     let dif = member.joinedAt - member.user.createdAt;
     member.guild.fetchInvites().then(guildInvites => {
@@ -133,7 +133,7 @@ client.on('guildMemberAdd', async(member) => {
     const canvas = Canvas.createCanvas(700, 250);
     const ctx = canvas.getContext('2d');
 
-    const background = await Canvas.loadImage('./IDEK.jpeg');
+    const background = await Canvas.loadImage('./bgimage.png');
     ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
 
     ctx.strokeStyle = '#74037b';
