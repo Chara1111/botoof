@@ -108,9 +108,9 @@ client.on('guildMemberAdd', async(member) => {
     if(member.guild.id !== '570577194783604736') return;
     member.guild.channels.get("570926226219335690").setName(`Member Count: ${member.guild.memberCount}`)
 
-    member.guild.channels.get("570926226219335690").setName(`User Count: ${member.guild.members.filter(member => !member.user.bot).size}`)
+    member.guild.channels.get("570926227230162974").setName(`User Count: ${member.guild.members.filter(member => !member.user.bot).size}`)
 
-    member.guild.channels.get("570926226219335690").setName(`Bot Count: ${member.guild.members.filter(member => member.user.bot).size}`)
+    member.guild.channels.get("570926226676383745").setName(`Bot Count: ${member.guild.members.filter(member => member.user.bot).size}`)
 
     const channel = member.guild.channels.get('594518913170145280');
 
@@ -174,9 +174,9 @@ client.on('guildMemberRemove', async(member) => {
 
     member.guild.channels.get("570926226219335690").setName(`Member Count: ${member.guild.memberCount}`)
 
-    member.guild.channels.get("570926226219335690").setName(`User Count: ${member.guild.members.filter(member => !member.user.bot).size}`)
+    member.guild.channels.get("570926227230162974").setName(`User Count: ${member.guild.members.filter(member => !member.user.bot).size}`)
 
-    member.guild.channels.get("570926226219335690").setName(`Bot Count: ${member.guild.members.filter(member => member.user.bot).size}`)
+    member.guild.channels.get("570926226676383745").setName(`Bot Count: ${member.guild.members.filter(member => member.user.bot).size}`)
 
 
     const channel = member.guild.channels.get('570577195223875595');
