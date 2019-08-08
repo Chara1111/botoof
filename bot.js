@@ -3,8 +3,9 @@ const Canvas                  = require('canvas');
 const client                  = new Discord.Client();
 const auth                    = require('./configs/auth.json');
 const invites                 = {};
-const automod = require('./automod');
-const limited = new Set()
+const automod                 = require('./modules/automod');
+const limited                 = new Set();
+const logger                  = require('./modules/logger');
 
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
@@ -22,7 +23,8 @@ client.on('ready', async() => {  // when bot is ready
 
     console.log(`Logged in as ${client.user.tag}! Developer mode: ${force}`);
 
-    automod.ready(client);
+    automod.ready();
+    logger.ready();
 
     await client.user.setActivity(`${client.users.size} users`, {type: "WATCHING"});  // rich presence
 
@@ -46,6 +48,7 @@ React to <:pepeOK:587586401000751125> to confirm you are active.`).then(async ms
 });
 
 client.on('message', async(message) => { //when message received
+    logger.log(client, message);
     if(message.channel.type === "dm" || message.channel.type === "group") return;
 
     let prefix = '>';
@@ -106,11 +109,11 @@ client.on('message', async(message) => { //when message received
 
 client.on('guildMemberAdd', async(member) => {
     if(member.guild.id !== '570577194783604736') return;
-    member.guild.channels.get("570926226219335690").setName(`Member Count: ${member.guild.memberCount}`)
+    member.guild.channels.get("570926226219335690").setName(`Member Count: ${member.guild.memberCount}`).then(() => {});
 
-    member.guild.channels.get("570926227230162974").setName(`User Count: ${member.guild.members.filter(member => !member.user.bot).size}`)
+    member.guild.channels.get("570926227230162974").setName(`User Count: ${member.guild.members.filter(member => !member.user.bot).size}`).then(() => {});
 
-    member.guild.channels.get("570926226676383745").setName(`Bot Count: ${member.guild.members.filter(member => member.user.bot).size}`)
+    member.guild.channels.get("570926226676383745").setName(`Bot Count: ${member.guild.members.filter(member => member.user.bot).size}`).then(() => {});
 
     const channel = member.guild.channels.get('594518913170145280');
 
@@ -172,11 +175,11 @@ client.on('guildMemberAdd', async(member) => {
 client.on('guildMemberRemove', async(member) => {
     if(member.guild.id !== '570577194783604736') return;
 
-    member.guild.channels.get("570926226219335690").setName(`Member Count: ${member.guild.memberCount}`)
+    member.guild.channels.get("570926226219335690").setName(`Member Count: ${member.guild.memberCount}`).then(() => {});
 
-    member.guild.channels.get("570926227230162974").setName(`User Count: ${member.guild.members.filter(member => !member.user.bot).size}`)
+    member.guild.channels.get("570926227230162974").setName(`User Count: ${member.guild.members.filter(member => !member.user.bot).size}`).then(() => {});
 
-    member.guild.channels.get("570926226676383745").setName(`Bot Count: ${member.guild.members.filter(member => member.user.bot).size}`)
+    member.guild.channels.get("570926226676383745").setName(`Bot Count: ${member.guild.members.filter(member => member.user.bot).size}`).then(() => {});
 
 
     const channel = member.guild.channels.get('570577195223875595');
