@@ -75,21 +75,21 @@ exports.run = (client, message, args) => {
             user.id === message.author.id && reaction.emoji.name === "🔨" || reaction.emoji.name === "🎲" || reaction.emoji.name === "🔧" || reaction.emoji.name === "🤖" || reaction.emoji.name === "💯" || reaction.emoji.name === "🔄",{time: 60000})
            collector.on('collect', reaction => {
                let name = reaction.emoji.name;
-               if(name === '🔄') {msg.edit(usage);
-                   removereact(msg, message, '🔄')}
-               else if(name === '🔨') {msg.edit(mod);
-                   removereact(msg, message, '🔨')}
-               else if(name === '🎲') {msg.edit(fun);
-                   removereact(msg, message, '🎲')}
-               else if(name === '🔧') {msg.edit(server);
-                   removereact(msg, message, '🔧')}
-               else if(name === '🤖') {msg.edit(bot);
-                   removereact(msg, message, '🤖')}
-               else if(name === '💯') {msg.edit(hundred);
-                   removereact(msg, message, '💯')}
+               if(name === '🔄') {msg.edit(usage).catch(() => {});
+                   removereact(msg, message, '🔄').catch(() => {})}
+               else if(name === '🔨') {msg.edit(mod).catch(() => {});
+                   removereact(msg, message, '🔨').catch(() => {})}
+               else if(name === '🎲') {msg.edit(fun).catch(() => {});
+                   removereact(msg, message, '🎲').catch(() => {})}
+               else if(name === '🔧') {msg.edit(server).catch(() => {});
+                   removereact(msg, message, '🔧').catch(() => {})}
+               else if(name === '🤖') {msg.edit(bot).catch(() => {});
+                   removereact(msg, message, '🤖').catch(() => {})}
+               else if(name === '💯') {msg.edit(hundred).catch(() => {});
+                   removereact(msg, message, '💯').catch(() => {})}
            })
         collector.on('end', reason => {
-            message.channel.send('Collector ended because of reason: ' + reason)
+            message.reply('Your menu expired, and can\'t be used now, if you want continue looking commands type command again.')
         })
 
         })
