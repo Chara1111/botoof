@@ -88,7 +88,7 @@ exports.run = (client, message, args) => {
                else if(name === '💯') {msg.edit(hundred).catch(() => {});
                    removereact(msg, message, '💯').catch(() => {})}
            })
-        collector.on('end', reason => {
+        collector.on('end', () => {
             message.reply('Your menu expired, and can\'t be used now, if you want continue looking commands type command again.')
         })
 
