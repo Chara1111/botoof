@@ -2,7 +2,7 @@ exports.ready = () => {
     console.log('Automod is working successfully!');
 };
 
-let logger = require('logger');
+let logger = require('./logger1');
 
 exports.swear = async(client, message, badword) => {
     if(message.author.bot) return;
