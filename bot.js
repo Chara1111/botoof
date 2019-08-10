@@ -84,9 +84,9 @@ client.on('message', async(message) => { //when message received
 
     if (!message.content.startsWith(prefix)) return; // if start without prefix - ignore
 
-    if(auth.ownerID !== message.author.id && force) return message.channel.send('Bot is currently running in developer mode. Only developer can use bot commands. Please be patient.');
+    if(cmd.startsWith(':') || cmd.startsWith(' ')) return;
 
-    if(cmd.startsWith(':')) return;
+    if(auth.ownerID !== message.author.id && force) return message.channel.send('Bot is currently running in developer mode. Only developer can use bot commands. Please be patient.');
 
     if(limited.has(message.author.id)) return message.reply('You are being rate limited. Bot commands can be used once per 1.5 seconds.');
 
