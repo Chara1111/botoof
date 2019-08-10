@@ -72,7 +72,7 @@ exports.run = (client, message, args) => {
         await msg.react('💯');
 
         const collector = msg.createReactionCollector((reaction, user) =>
-            user.id === message.author.id && reaction.emoji.name === "🔨" || reaction.emoji.name === "🎲" || reaction.emoji.name === "🔧" || reaction.emoji.name === "🤖" || reaction.emoji.name === "💯" || reaction.emoji.name === "🔄").once("collect", {time: 60000});
+            user.id === message.author.id && reaction.emoji.name === "🔨" || reaction.emoji.name === "🎲" || reaction.emoji.name === "🔧" || reaction.emoji.name === "🤖" || reaction.emoji.name === "💯" || reaction.emoji.name === "🔄",{time: 60000})
            collector.on('collect', reaction => {
                let name = reaction.emoji.name;
                if(name === '🔄') {msg.edit(usage);
