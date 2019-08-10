@@ -63,7 +63,14 @@ exports.run = (client, message, args) => {
         .addField('Regular commands', 'Tap on 💯') // avatar, userinfo
         .setFooter('Tip: tap on reaction to choose menu'); //
 
-    message.channel.send(usage).then(msg => {
+    message.channel.send(usage).then(async msg => {
+        await msg.react('🔄');
+        await msg.react('🎲');
+        await msg.react('🔧');
+        await msg.react('🔨');
+        await msg.react('🤖');
+        await msg.react('💯');
+
         const collector = msg.createReactionCollector((reaction, user) =>
             user.id === message.author.id && reaction.emoji.name === "🔨" || reaction.emoji.name === "🎲" || reaction.emoji.name === "🔧" || reaction.emoji.name === "🤖" || reaction.emoji.name === "💯" || reaction.emoji.name === "🔄").once("collect", reaction => {
                 const name = reaction.emoji.name;
