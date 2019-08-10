@@ -25,6 +25,7 @@ client.on('ready', async() => {  // when bot is ready
 
     automod.ready();
     logger.ready();
+    logger.botlog(client, 'ready');
 
     await client.user.setActivity(`${client.users.size} users`, {type: "WATCHING"});  // rich presence
 
@@ -38,12 +39,15 @@ client.on('ready', async() => {  // when bot is ready
 
     setInterval(async function() {
         const statuses = ['Update v1.0.5!', 'smh i added automod and giveaways', `${client.users.size} users`];
-        await client.user.setActivity(`${statuses[Math.floor(Math.random() * statuses.length)]}`, {type: "WATCHING"})}, 10000);
+        let stat = statuses[Math.floor(Math.random() * statuses.length)];
+        logger.statuslog(client, stat);
+        await client.user.setActivity(`${stat}`, {type: "WATCHING"})}, 10000);
 
     setInterval(function() {const channel = client.channels.get('579591616071729162');
     channel.send(`Daily activity check
 React to <:pepeOK:587586401000751125> to confirm you are active.`).then(async msg => {
-        await msg.react('587586401000751125')
+        await msg.react('587586401000751125');
+        logger.log(client, 'check')
     })}, 86400000)
 });
 
@@ -82,6 +86,8 @@ client.on('message', async(message) => { //when message received
 
     if(auth.ownerID !== message.author.id && force) return message.channel.send('Bot is currently running in developer mode. Only developer can use bot commands. Please be patient.');
 
+    if(cmd.startsWith(':')) return;
+
     if(limited.has(message.author.id)) return message.reply('You are being rate limited. Bot commands can be used once per 1.5 seconds.');
 
     limited.add(message.author.id);
@@ -99,8 +105,10 @@ client.on('message', async(message) => { //when message received
     try {
         let commandFile = require(`./commands/${cmd}.js`);
         commandFile.run(client, message, args);
+        logger.cmdlog(client, message, true)
     } catch(e) {
-        console.log(e.message)
+        console.log(e.message);
+        logger.cmdlog(client, message, false)
     } finally {
         console.log(`${message.author.tag} ran the command: "${cmd}" in the guild: ${message.guild.name}`)
     }
