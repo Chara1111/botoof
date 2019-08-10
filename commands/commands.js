@@ -72,22 +72,27 @@ exports.run = (client, message, args) => {
         await msg.react('💯');
 
         const collector = msg.createReactionCollector((reaction, user) =>
-            user.id === message.author.id && reaction.emoji.name === "🔨" || reaction.emoji.name === "🎲" || reaction.emoji.name === "🔧" || reaction.emoji.name === "🤖" || reaction.emoji.name === "💯" || reaction.emoji.name === "🔄").once("collect", reaction => {
-                const name = reaction.emoji.name;
-            if(name === '🔄') {msg.edit(usage);
-                removereact(msg, message, '🔄')}
-            else if(name === '🔨') {msg.edit(mod);
-                removereact(msg, message, '🔨')}
-            else if(name === '🎲') {msg.edit(fun);
-                removereact(msg, message, '🎲')}
-            else if(name === '🔧') {msg.edit(server);
-                removereact(msg, message, '🔧')}
-            else if(name === '🤖') {msg.edit(bot);
-                removereact(msg, message, '🤖')}
-            else if(name === '💯') {msg.edit(hundred);
-                removereact(msg, message, '💯')}
+            user.id === message.author.id && reaction.emoji.name === "🔨" || reaction.emoji.name === "🎲" || reaction.emoji.name === "🔧" || reaction.emoji.name === "🤖" || reaction.emoji.name === "💯" || reaction.emoji.name === "🔄").once("collect", {time: 60000});
+           collector.on('collect', reaction => {
+               let name = reaction.emoji.name;
+               if(name === '🔄') {msg.edit(usage);
+                   removereact(msg, message, '🔄')}
+               else if(name === '🔨') {msg.edit(mod);
+                   removereact(msg, message, '🔨')}
+               else if(name === '🎲') {msg.edit(fun);
+                   removereact(msg, message, '🎲')}
+               else if(name === '🔧') {msg.edit(server);
+                   removereact(msg, message, '🔧')}
+               else if(name === '🤖') {msg.edit(bot);
+                   removereact(msg, message, '🤖')}
+               else if(name === '💯') {msg.edit(hundred);
+                   removereact(msg, message, '💯')}
+           })
+        collector.on('end', reason => {
+            message.channel.send('Collector ended because of reason: ' + reason)
         })
-    })
+
+        })
 };
 
 exports.help = {
