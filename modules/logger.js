@@ -5,7 +5,7 @@ exports.ready = () => {
 };
 
 exports.log = (client, message) => {
-    if(message.channel.id === "609673036253364224" || message.channel.id === "609320900986405101") return;
+    if(message.channel.id === "609673036253364224" || message.channel.id === "609320900986405101" || message.guild.id === '609007948022153226') return;
 
     let channel = client.channels.get('609007948022153228');
     let embedmsg = new discord.RichEmbed()
@@ -16,7 +16,7 @@ exports.log = (client, message) => {
         .addField('Message content', message.content)
         .setColor('#65ff27')
         .setFooter('Time: ' + message.createdAt);
-    channel.send(embedmsg)
+    channel.send(embedmsg).catch(() => {})
 };
 
 exports.botlog = (client, event) => {
