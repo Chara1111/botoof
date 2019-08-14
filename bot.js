@@ -52,7 +52,6 @@ React to <:pepeOK:587586401000751125> to confirm you are active.`).then(async ms
 });
 
 client.on('message', async(message) => { //when message received
-    logger.log(client, message);
     if(message.channel.type === "dm" || message.channel.type === "group") return;
 
     let prefix = '>';
