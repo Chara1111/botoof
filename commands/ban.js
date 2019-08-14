@@ -2,7 +2,7 @@ const discord = require('discord.js');
 exports.run = async(client, message, args) => {
     const user = message.mentions.users.first();
     let banReason = args.slice(1).join(' ');
-    if(!banReason) banReason = 'No reason given.'
+    if(!banReason) banReason = 'No reason given.';
     let embed = new discord.RichEmbed()
         .setColor('#ff0000')
         .setTitle('Oops!')
