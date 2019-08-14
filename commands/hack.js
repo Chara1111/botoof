@@ -33,6 +33,7 @@ exports.run = async(client, message, args) => {
         msg.edit(embed).then(() => {});
         await sleep(1000);
         embed.setDescription("Account has 2FA dang");
+        msg.edit(embed).then(() => {});
         await sleep(1500);
         embed.setFooter("[████------] 40%");
         embed.setDescription("Injecting virus into phone...");
