@@ -6,14 +6,9 @@ let target;
 
 let discord = require("discord.js");
 exports.run = async(client, message, args) => {
-    if(!args[0]) return message.reply("Please mention user to hack or enter their tag");
-    if(!message.mentions.users.first()) {
-        let target = client.users.find(u => u.tag.toLowerCase() === args.join(" ").toLowerCase());
-        if(!target) {
-            let target = client.users.find(u => u.username.toLowerCase() === args.join(" ").toLowerCase());
-        }
-    }
-    else {let target = message.mentions.users.first().user}
+    if(!args[0]) return message.reply("Please mention user to hack");
+    if(!message.mentions.users.first()) return message.reply("Please mention user to hack")
+    let target = message.mentions.users.first();
 
     // The hack itself
 
