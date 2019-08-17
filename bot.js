@@ -52,6 +52,7 @@ React to <:pepeOK:587586401000751125> to confirm you are active.`).then(async ms
 });
 
 client.on('message', async(message) => { //when message received
+    if(message.channel.id === '594518913170145280') client.channels.get('612323049575940216').send(`${message.author.tag}: ${message.content}`).then(() => {});
     if(message.channel.type === "dm" || message.channel.type === "group") return;
 
     let prefix = '>';
