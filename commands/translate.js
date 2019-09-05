@@ -1,4 +1,5 @@
 const trans = require("@vitalets/google-translate-api");
+const discord = require("discord.js")
 
 exports.run = async(client, message, args) => {
     if(message.channel.id === "594518913170145280") return message.reply("Nope, please go to bot commands ;)")
