@@ -14,14 +14,15 @@ exports.run = async(client, message, args) => {
     }
 
     let reason = args.join(" ");
+    let member = message.guild.members.get(user.id);
 
     if (user === message.author) return message.reply('You can\'t ban yourself');
     if (!message.guild.member(user).bannable) return message.reply('You can\'t ban this user!');
-    if(user.roles.find(r => r.name.toLowerCase().includes('staff team'))) return message.channel.send('<:cross:584800355951443968> You cant ban a staff member');
+    if(member.roles.find(r => r.name.toLowerCase().includes('staff team'))) return message.channel.send('<:cross:584800355951443968> You cant ban a staff member');
 
     await client.users.get(user.id).send(`You were banned in ${message.guild.name} for: ${reason}`);
 
-    await message.guild.ban(user);
+    await message.guild.ban(user.id);
 
     await message.channel.send(`**${user.tag} was banned for: ${reason}**`)
 };
