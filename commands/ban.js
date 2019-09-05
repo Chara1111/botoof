@@ -13,7 +13,7 @@ exports.run = async(client, message, args) => {
         if(!user) return message.reply("Couldnt get valid user...")
     }
 
-    let reason = args.join(" ");
+    let reason = args.shift().join(" ");
     let member = message.guild.members.get(user.id);
 
     if (user === message.author) return message.reply('You can\'t ban yourself');
