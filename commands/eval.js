@@ -1,5 +1,10 @@
 const ownerid = require('../configs/auth.json').ownerID;
-exports.run = (client, message, args) => {
+
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+exports.run = async (client, message, args) => {
     if(message.author.id !== ownerid) return message.channel.send('Oops, this command is only for developer!');
     function clean(text) {
         if (typeof(text) === "string")

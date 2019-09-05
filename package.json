@@ -13,6 +13,7 @@
   },
   "author": "Kirillin1111 (dank meme#0001)",
   "dependencies": {
+    "@vitalets/google-translate-api": "^3.0.0",
     "ansi-regex": "^4.1.0",
     "avconv": "^3.1.0",
     "bindings": "^1.5.0",
@@ -21,6 +22,7 @@
     "dotenv": "^8.0.0",
     "ffmpeg-binaries": "^4.0.0",
     "fs": "0.0.1-security",
+    "google-translate-api": "^2.3.0",
     "node": "^8.9.4",
     "node-gyp": "^4.0.0",
     "node-pre-gyp": "^0.13.0",

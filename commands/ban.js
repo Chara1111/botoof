@@ -11,9 +11,7 @@ exports.run = async(client, message, args) => {
     if(!message.member.hasPermission("BAN_MEMBERS")) return message.channel.send(embed);
     if (!user) {
         try {
-// Check if a valid userID has been entered instead of a Discord user mention
-            if (!message.guild.members.get(args.slice(0, 1).join(' '))) throw new Error('Couldn\'t get a Discord user with this userID!');
-// If the client (bot) can get a user with this userID, it overwrites the current user variable to the user object that the client fetched
+            if (!message.guild.members.get(args.slice(0, 1).join(' '))) message.channel.send('Couldn\'t get a Discord user with this userID!')
             let user1 = message.guild.members.get(args.slice(0, 1).join(' '));
             let user = user1.user;
         } catch (error) {
@@ -22,7 +20,7 @@ exports.run = async(client, message, args) => {
     }
     if (user === message.author) return message.reply('You can\'t ban yourself');
     if (!message.guild.member(user).bannable) return message.reply('You can\'t ban this user!');
-    if(message.member.highestRole.comparePositionTo(user1.highestRole) < 1) return message.channel.send('<:cross:584800355951443968> lmfao dont try to ban person with ur role or above u');
+    if(message.member.highestRole.comparePositionTo(user1.highestRole) < 1) return message.channel.send('<:cross:584800355951443968> dont try to ban person with ur role or above u');
 
     await client.users.get(user.id).send(`You were banned in ${message.guild.name} for: ${banReason}`)
 

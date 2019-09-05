@@ -73,14 +73,11 @@ client.on('message', async(message) => { //when message received
         }
     }
 
-    if(message.content.includes('<@!437629779982942210>' || message.content.includes('<@437629779982942210>'))) {message.channel.send('```Please Dont Ping Zroll For No Specific Reason\n' +
-        '-----------------------------------------\n' +
-        'If You Continue Pinging This Might Cause A Mute Or A Ban Thanks```');
-    await message.react('579347864556142593')}
-
     if(message.content.includes('<@!579715446123790366>') || message.content.includes("<@579715446123790366>")) {message.reply(`Current prefix is \`>\``)}
 
-    if(message.channel.id === '579615725002424322' && message.content !== '!verify ' ) return message.delete();
+    if(message.author.id === "339254240012664832" && message.channel.id === "594518913170145280" && message.attachments.size > 0) return message.delete();
+
+    if(message.channel.id === '579615725002424322' && message.content !== '!verify' ) return message.delete();
 
     if (!message.content.startsWith(prefix)) return; // if start without prefix - ignore
 

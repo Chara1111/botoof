@@ -19,11 +19,9 @@ let fun = new discord.RichEmbed()
     .setTitle('🎲 Fun commands')
     .setColor('#ef2bff')
     .addField('>ask question', '`>ask am i gay? :thinking:`')
-    .addField('>b', '`>b`')
     .addField('>count seconds', '`>count 10`')
     .addField('>dice sides', '`>dice 6`')
     .addField('>f', '`>f`')
-    .addField('>flex', '`>flex`')
     .addField('>meme', '`>meme`')
     .addField('>scam item to scam', '`>scam nitro`');
 
@@ -49,6 +47,7 @@ let hundred = new discord.RichEmbed()
     .setTitle('💯 Regular commands')
     .setColor('#6e2012')
     .addField('>avatar (@user)', '`>avatar`')
+    .addField('>translate (output lang (2 letters)) (text to translate)', '`>translate en доброе утро страна`')
     .addField('>userinfo (@user)', '`>userinfo @dank_meme#0001`');
 
 exports.run = (client, message, args) => {
@@ -57,10 +56,10 @@ exports.run = (client, message, args) => {
         .setDescription('You will see commands with their usage, and example')
         .setColor('#4764fa')
         .addField('Moderator commands', 'Tap on 🔨') // addrole, ban, kick, mute, purge, removerole, unmute
-        .addField('Fun commands', 'Tap on 🎲') // ask, b, count, dice, f, flex, meme, scam
+        .addField('Fun commands', 'Tap on 🎲') // ask, count, dice, f, meme, scam
         .addField('Server-related commands', 'Tap on 🔧') // announce, giveaway, gp, serverinfo, suggest
         .addField('Bot-related commands', 'Tap on 🤖') // commands, help, info, ping, uptime
-        .addField('Regular commands', 'Tap on 💯') // avatar, userinfo
+        .addField('Regular commands', 'Tap on 💯') // avatar, userinfo, translate
         .setFooter('Tip: tap on reaction to choose menu'); //
 
     message.channel.send(usage).then(async msg => {

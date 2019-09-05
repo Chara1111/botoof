@@ -11,14 +11,14 @@ exports.run = async (client, message, args) => {
     if(!message.member.hasPermission("KICK_MEMBERS")) return message.channel.send(embed);
     if (!user) {
         try {
-            if (!message.guild.members.get(args.slice(0, 1).join(' '))) throw new Error('Couldn\'t get a Discord user with this userID!');
+            if (!message.guild.members.get(args.slice(0, 1).join(' '))) return message.channel.send('Couldn\'t get a Discord user with this userID!');
         } catch (error) {
             return message.reply('Couldn\'t get a Discord user with this userID!');
         }
     }
     if (user === message.author) return message.reply('You can\'t kick yourself');
     if (!message.guild.member(user).bannable) return message.reply('You can\'t kick this user!');
-    if(message.member.highestRole.comparePositionTo(message.guild.members.get(user.id).highestRole) < 1) return message.channel.send('<:cross:584800355951443968> lmfao dont try to kick person with ur role or above u');
+    if(message.member.highestRole.comparePositionTo(message.guild.members.get(user.id).highestRole) < 1) return message.channel.send('<:cross:584800355951443968> dont try to kick person with ur role or above u');
 
     await client.users.get(user.id).send(`You were kicked from ${message.guild.name} for: ${banReason}`);
 
