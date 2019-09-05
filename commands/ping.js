@@ -1,6 +1,7 @@
 const RichEmbed = require('discord.js');
 
 exports.run = (client, message, args) => {
+    if(message.channel.id === "594518913170145280") return message.reply("Nope, please go to bot commands ;)")
     const embed = new RichEmbed.RichEmbed()
         .setTitle('Pong!')
         .setColor('#1010FF')

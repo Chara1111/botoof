@@ -1,7 +1,7 @@
 let discord = require('discord.js');
 
-const removereact = async(m, msg, emoji) => {
-    m.reactions.find(r => r.emoji.name == emoji).users.remove(msg.author.id)
+const removereact = async(m, msg, emoji, client) => {
+    m.reactions.find(r => r.emoji.name === emoji).remove(client.users.get(msg.author.id))
 };
 
 let mod = new discord.RichEmbed()
@@ -51,6 +51,7 @@ let hundred = new discord.RichEmbed()
     .addField('>userinfo (@user)', '`>userinfo @dank_meme#0001`');
 
 exports.run = (client, message, args) => {
+    if(message.channel.id === "594518913170145280") return message.reply("Nope, please go to bot commands ;)")
     let usage = new discord.RichEmbed()
         .setTitle('Choose command menu')
         .setDescription('You will see commands with their usage, and example')
@@ -75,17 +76,17 @@ exports.run = (client, message, args) => {
            collector.on('collect', reaction => {
                let name = reaction.emoji.name;
                if(name === '🔄') {msg.edit(usage).catch(() => {});
-                   removereact(msg, message, '🔄').catch(() => {})}
+                   removereact(msg, message, '🔄', client).catch(() => {})}
                else if(name === '🔨') {msg.edit(mod).catch(() => {});
-                   removereact(msg, message, '🔨').catch(() => {})}
+                   removereact(msg, message, '🔨', client).catch(() => {})}
                else if(name === '🎲') {msg.edit(fun).catch(() => {});
-                   removereact(msg, message, '🎲').catch(() => {})}
+                   removereact(msg, message, '🎲', client).catch(() => {})}
                else if(name === '🔧') {msg.edit(server).catch(() => {});
-                   removereact(msg, message, '🔧').catch(() => {})}
+                   removereact(msg, message, '🔧', client).catch(() => {})}
                else if(name === '🤖') {msg.edit(bot).catch(() => {});
-                   removereact(msg, message, '🤖').catch(() => {})}
+                   removereact(msg, message, '🤖', client).catch(() => {})}
                else if(name === '💯') {msg.edit(hundred).catch(() => {});
-                   removereact(msg, message, '💯').catch(() => {})}
+                   removereact(msg, message, '💯', client).catch(() => {})}
            })
         collector.on('end', () => {
             message.reply('Your menu expired, and can\'t be used now, if you want continue looking commands type command again.')

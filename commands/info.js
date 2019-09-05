@@ -1,4 +1,5 @@
 exports.run = (client, message, args) => {
+    if(message.channel.id === "594518913170145280") return message.reply("Nope, please go to bot commands ;)")
     const emb = require('discord.js').RichEmbed;
     const embed = new emb()
         .setTitle('Current version 1.0.6')

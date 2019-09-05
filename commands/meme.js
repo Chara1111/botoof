@@ -2,7 +2,8 @@ const Discord = require("discord.js");
 const bot = new Discord.Client();
 const snekfetch = require('snekfetch');
 exports.run = async (client, message, args) => {
-    let subreddits = ['dankmemes', 'funny', 'memes'];
+    if(message.channel.id === "594518913170145280") return message.reply("Nope, please go to bot commands ;)")
+    let subreddits = ['dankmemes', 'memes'];
     let sub = subreddits[Math.floor(Math.random() * subreddits.length)];
     try {
         const { body } = await snekfetch

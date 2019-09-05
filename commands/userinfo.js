@@ -1,6 +1,7 @@
 const discord = require('discord.js');
 
 exports.run = (client, message, args) => {
+    if(message.channel.id === "594518913170145280") return message.reply("Nope, please go to bot commands ;)")
     let member = message.author;
     let user = message.member
     const embed = new discord.RichEmbed()

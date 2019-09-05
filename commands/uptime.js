@@ -1,4 +1,5 @@
 exports.run = async(client, message, args) => {
+    if(message.channel.id === "594518913170145280") return message.reply("Nope, please go to bot commands ;)")
     let totalSeconds = (client.uptime / 1000);
     let days = Math.floor(totalSeconds / 86400);
     let hours = Math.floor(totalSeconds / 3600);

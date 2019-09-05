@@ -1,6 +1,7 @@
 const d = require('discord.js').RichEmbed
 
 exports.run = (client, message, args) => {
+    if(message.channel.id === "594518913170145280") return message.reply("Nope, please go to bot commands ;)")
     const embed = new d()
         .setTitle('Info about bot')
         .setColor('#847837')
