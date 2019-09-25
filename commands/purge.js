@@ -6,6 +6,8 @@ exports.run = async(client, message, args) => {
         .setColor('#ff0000');
     if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.channel.send(emb);
 
+    if(message.author.id === "410999098573979650") return message.reply("Ur banned from purge congrats") 
+
     const deleteCount = parseInt(args[0], 10);
 
     if(!deleteCount || deleteCount < 1 || deleteCount > 100) return message.reply("Please provide a number between 1 and 100 for the number of messages to delete");
