@@ -1,4 +1,4 @@
-const Discord                 = require('discord.js');
+﻿const Discord                 = require('discord.js');
 const Canvas                  = require('canvas');
 const client                  = new Discord.Client();
 const auth                    = require('./configs/auth.json');
@@ -73,7 +73,7 @@ client.on('message', async(message) => { //when message received
         }
     }
 
-    if(message.content.includes('<@!579715446123790366>') || message.content.includes("<@579715446123790366>")) {message.reply(`Current prefix is \`>\``)}
+    if(message.content.includes('<@!619805669884952586>') || message.content.includes("<@619805669884952586>")) {message.reply(`Current prefix is \`>\``)}
 
     if(message.author.id === "339254240012664832" && message.channel.id === "594518913170145280" && message.attachments.size > 0) return message.delete();
 
