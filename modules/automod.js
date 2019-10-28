@@ -20,4 +20,4 @@ exports.swear = async(client, message, badword) => {
     await message.delete();
 };
 
-exports.badwords = ['bitch', 'dick', 'cock', 'fuck', 'fuсk', 'b1tch', 'c0ck', 'nigg', 'asshole', 'assh0le', 'blowjob', 'bl0wjob', 'asshole'];
+exports.badwords = ['nigg', "nïgg", "nìgg", " nīgg", "nîgg", "nígg", "n!gg", "n¡gg", "пigg", "пïgg", "пìgg", "пīgg", "пîgg", "пígg"];
