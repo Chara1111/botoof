@@ -1,3 +1,5 @@
+
+
 const discord = require("discord.js")
 
 exports.run = (client, message, args) => {
@@ -35,10 +37,13 @@ unrstring = unrstring +  message.guild.members.get(unreacted[i]).user.name + "#"
 
 let rstring = "List of people who did react on activity check:\n"
 for(let i = 0;i<reacted.length;i++) {
-rstring = rstring +  message.guild.members.get(reacted[i]).user.name + "#" + message.guild.members.get(reacted[i]).user.discriminator + "\n"
+rstring = rstring +  message.guild.members.get(reacted[i]).user.username + "#" + message.guild.members.get(reacted[i]).user.discriminator + "\n"
 }
 // Sending success check message
 message.reply(unrstring + rstring)
 
 }).catch(error => {message.reply("There was an error during executing this command! `" + error.message + "`")})
+
+console.log(reacted, unreacted)
+
 }
