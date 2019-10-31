@@ -32,7 +32,7 @@ delete unreacted[unreacted.indexOf(reacted[i])]
 // Making a list of reacted/unreacted people
 let unrstring = "List of people who did not react on activity check:\n"
 for(let i = 0;i<unreacted.length;i++) {
-unrstring = unrstring +  message.guild.members.get(unreacted[i]).user.name + "#" + message.guild.members.get(unreacted[i]).user.discriminator + "\n"
+unrstring = unrstring +  message.guild.members.get(unreacted[i]).user.username + "#" + message.guild.members.get(unreacted[i]).user.discriminator + "\n"
 }
 
 let rstring = "List of people who did react on activity check:\n"
