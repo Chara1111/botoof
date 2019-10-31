@@ -44,6 +44,7 @@ message.reply(unrstring + rstring)
 
 }).catch(error => {message.reply("There was an error during executing this command! `" + error.message + "`")})
 
-console.log(reacted, unreacted)
+console.log(reacted)
+console.log(unreacted)
 
 }
