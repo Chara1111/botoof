@@ -23,10 +23,11 @@ acc.fetchMessage(msgid).then(msg => {
 // Setting up (ye again)
 let reacted = msg.reactions.filter(emoji => emoji.emoji.id === "587586401000751125").first().users.array().map(u => u.id)
 let unreacted = msg.guild.roles.get("579343749893586950").members.map(u => u.user.id)
-
+console.log(reacted);
+console.log(unreacted);
 // Removing from unreacted array everyone from reacted array
 for(let i = 0;i<reacted.length;i++){
-delete unreacted[unreacted.indexOf(reacted[i])]
+unreacted.splice(unreacted.indexOf(reacted[i]), 1)
 }
 
 // Making a list of reacted/unreacted people
@@ -44,7 +45,7 @@ message.reply(unrstring + rstring)
 
 }).catch(error => {message.reply("There was an error during executing this command! `" + error.message + "`")})
 
-console.log(reacted)
-console.log(unreacted)
+
+
 
 }
