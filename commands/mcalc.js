@@ -7,7 +7,7 @@ exports.run = (client, message, args) => {
         .setFooter('Command ran by ' + message.author.tag)
         .setDescription('Just type in chat 1 or 2. 1 is for Java Edition, 2 is for Bedrock Edition');
     message.channel.send(askver);
-    filter = response => {return response.author === message.author && (response.content === '1' || response.content === '2')};
+    const filter = response => {return response.author === message.author && (response.content === '1' || response.content === '2')};
     message.channel.awaitMessages(filter, { time: 10000, errors: ["time"] }).then(collected => {
         if(collected.first().content === '1') {
             // Java edition calculator
