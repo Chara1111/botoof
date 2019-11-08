@@ -13,7 +13,7 @@ exports.run = (client, message, args) => {
     for(let i=0;i<5;i++) {
         if(crdate < tdate) crdate = crdate + 31536000000;
     }
-    let difference = Math.floor((crdate - tdate) / 1000 / 60 / 60 / 24)
+    let difference = Math.round((crdate - tdate) / 1000 / 60 / 60 / 24);
     message.reply(member.username + '#' + member.discriminator + '\'s birthday is in (approx) ' + difference + ' days!')
 
 };
