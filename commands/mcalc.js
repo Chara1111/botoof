@@ -5,8 +5,16 @@ exports.run = (client, message, args) => {
         .setTitle(':one: Please choose version')
         .setColor('#4843ff')
         .setDescription('Just type in chat 1 or 2. 1 is for Java Edition, 2 is for Bedrock Edition');
-    filter = msg => msg.content === '2' || msg.content === '1'
-    message.channel.awaitMessages(filter).then(collected => {
-        message.channel.send(collected)
-    })
+    message.channel.send(askver);
+    filter = response => {return response.author === message.author && (response.content === '1' || response.content === '2')};
+    message.channel.awaitMessages(filter, { time: 10000, errors: ["time"] }).then(collected => {
+        if(collected.first().content === '1') {
+            // Java edition calculator
+
+        }
+        else if(collected.first().content === '2') {
+            // Bedrock edition calculator
+        }
+                }).catch(collected => {message.channel.send("Looks like you forgot about me... Try run command again and respond faster this time.")})
+
 };
