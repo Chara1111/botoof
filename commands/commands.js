@@ -23,7 +23,8 @@ let fun = new discord.RichEmbed()
     .addField('>dice sides', '`>dice 6`')
     .addField('>f', '`>f`')
     .addField('>meme', '`>meme`')
-    .addField('>scam item to scam', '`>scam nitro`');
+    .addField('>scam item to scam', '`>scam nitro`')
+    .addField('>coinflip', '`>coinflip`');
 
 let server = new discord.RichEmbed()
     .setTitle('🔧 Server-related commands')
@@ -47,8 +48,9 @@ let hundred = new discord.RichEmbed()
     .setTitle('💯 Regular commands')
     .setColor('#6e2012')
     .addField('>avatar (@user)', '`>avatar`')
-    .addField('>translate (output lang (2 letters)) (text to translate)', '`>translate en доброе утро страна`')
-    .addField('>userinfo (@user)', '`>userinfo @dank_meme#0001`');
+    .addField('>translate (output lang) (text to translate)', '`>translate en доброе утро страна`')
+    .addField('>userinfo (@user)', '`>userinfo @dank_meme#2268`')
+    .addField('>bday (@user/userID)', '`>bday @dank_meme#2268`');
 
 exports.run = (client, message, args) => {
     if(message.channel.id === "594518913170145280") return message.reply("Nope, please go to bot commands ;)")

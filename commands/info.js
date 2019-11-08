@@ -4,14 +4,12 @@ exports.run = (client, message, args) => {
     const embed = new emb()
         .setTitle('Current version 1.0.8')
         .setDescription('Version 1.0.8 =>' +
-        '\n**i wanna sleep**' +
-        '\n> some commands have been deleted (check >cmds)' +
-        '\n> fixed some bugs with >cmds'+
-        '\n> boi fixed >ban and >kick' +
-        '\n> awesome command >translate (example in >cmds -> regular commands)' +
-        '\n> some checks so you cant use some of commands in main chat, to not flood it' +
-        '\n> `>addrole` and `>removerole` now can be used with id or mention <:awoo:594258019433578508>' +
-        '\n> you can now set time for `>mute` command')
+        '\n**boi birthday command was without errors first time I runned it**' +
+        '\n> `>bday` command! (Warning: it doesnt show real birthday, but acoount birthday)' +
+        '\n> `>coinflip` is new command too.'+
+        '\n> Secret command is being worked! Coming soon...' +
+        '\n> Minecraft command is being worked too. Stay tuned.' +
+        '\nTell me thanks for releasing update right now and not after I will done making 2 commands above')
         .setColor('#477383');
     message.channel.send(embed)
 };
