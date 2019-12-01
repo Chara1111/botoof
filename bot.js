@@ -43,7 +43,7 @@ client.on('ready', async() => {  // when bot is ready
         logger.statuslog(client, stat);
         await client.user.setActivity(`${stat}`, {type: "WATCHING"})}, 10000);
 
-    setInterval(function() {const channel = client.channels.get('579591616071729162');
+    setInterval(function() {const channel = client.channels.get('646412588242042890');
     channel.send(`Daily activity check
 React to <:pepeOK:587586401000751125> to confirm you are active.`).then(async msg => {
         await msg.react('587586401000751125');
@@ -114,13 +114,8 @@ client.on('message', async(message) => { //when message received
 
 client.on('guildMemberAdd', async(member) => {
     if(member.guild.id !== '570577194783604736') return;
-    member.guild.channels.get("570926226219335690").setName(`Member Count: ${member.guild.memberCount}`).then(() => {});
 
-    member.guild.channels.get("570926227230162974").setName(`User Count: ${member.guild.members.filter(member => !member.user.bot).size}`).then(() => {});
-
-    member.guild.channels.get("570926226676383745").setName(`Bot Count: ${member.guild.members.filter(member => member.user.bot).size}`).then(() => {});
-
-    const channel = member.guild.channels.get('594518913170145280');
+    const channel = member.guild.channels.get('646412492947324931');
 
     let dif = member.joinedAt - member.user.createdAt;
     member.guild.fetchInvites().then(guildInvites => {
