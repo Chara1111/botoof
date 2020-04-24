@@ -60,7 +60,7 @@ exports.run = (client, message, args) => {
                 for(let i=0; i<winners; i++) {
                     let id = reacted[Math.floor(Math.random() * reacted.length)];
 
-                    if(id.id === '579715446123790366') return;
+                    if(id.id === '619805669884952586') return;
                     wonusers.push('<@!' + id.id + '>')
                 }
 
