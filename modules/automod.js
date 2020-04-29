@@ -12,9 +12,10 @@ exports.swear = async(client, message, badword) => {
     await message.reply('Watch your language!');
 
     if(badword === 'nigg') {
-        message.member.ban('said n word').catch(() => {
-            console.log('Cannot ban ' + message.author.tag + ' for saying n word')
-        })
+        //message.member.ban('said n word').catch(() => {
+        //    console.log('Cannot ban ' + message.author.tag + ' for saying n word')
+        //})
+        message.member.addRole(message.guild.roles.find(r => r.name.toLowerCase().includes("mute"))) 
     }
 
     await message.delete();
