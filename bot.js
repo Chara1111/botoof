@@ -6,6 +6,7 @@ const invites                 = {};
 const automod                 = require('./modules/automod');
 const limited                 = new Set();
 const logger                  = require('./modules/logger');
+const botbanned               = require('./botbanned.json')
 
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
@@ -43,12 +44,12 @@ client.on('ready', async() => {  // when bot is ready
         logger.statuslog(client, stat);
         await client.user.setActivity(`${stat}`, {type: "WATCHING"})}, 10000);
 
-    setInterval(function() {const channel = client.channels.get('646412588242042890');
+    /*setInterval(function() {const channel = client.channels.get('646412588242042890');
     channel.send(`Daily activity check
 React to <:pepeOK:587586401000751125> to confirm you are active.`).then(async msg => {
         await msg.react('587586401000751125');
         logger.log(client, 'check')
-    })}, 86400000)
+    })}, 86400000)*/
 });
 
 client.on('message', async(message) => { //when message received
@@ -93,12 +94,8 @@ client.on('message', async(message) => { //when message received
         limited.delete(message.author.id)
     }, 1500);
 
-    if (cmd === 'ss') {
-        if (auth.ownerID !== sender.id && sender.id !== '437629779982942210') return;
-        let file = require(`./minigames/simon says/main.js`);
-        file.run(client, message, args)
-    }
     else {
+        if(botbanned.includes(message.author.id)) return message.reply("You are banned from using this bot.")
     try {
         let commandFile = require(`./commands/${cmd}.js`);
         commandFile.run(client, message, args);
