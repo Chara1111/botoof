@@ -96,7 +96,6 @@ client.on('message', async(message) => { //when message received
         limited.delete(message.author.id)
     }, 1500);
 
-    else {
     try {
         let commandFile = require(`./commands/${cmd}.js`);
         commandFile.run(client, message, args);
@@ -107,7 +106,6 @@ client.on('message', async(message) => { //when message received
     } finally {
         console.log(`${message.author.tag} ran the command: "${cmd}" in the guild: ${message.guild.name}`)
     }
-}
 });
 
 client.on('guildMemberAdd', async(member) => {
