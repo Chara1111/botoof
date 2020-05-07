@@ -12,7 +12,7 @@ console.log("debug chapter 1 done")
 
 let bannedlist = JSON.parse(fs.readFileSync("./botbanned.json", "utf8"));
   console.log("debug 2:1")
-if bannedlist.includes(botbanned.id) return message.reply("This user is already bot banned!")
+if(bannedlist.includes(botbanned.id)) return message.reply("This user is already bot banned!")
   console.log("debug 2:2")
 bannedlist.append(botbanned.id)
   console.log("debug 2:3")
