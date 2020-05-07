@@ -1,7 +1,7 @@
 const fs = require('fs')
 
 exports.run = (client,message,args) => {
-if(message.author.id !== "398181506423455755" && message.author.id !== "612930885230002208") return message.reply("Woah there, you do not have permission to botban people")
+if(message.author.id !== "398181506423455755" && message.author.id !== "612930885230002208" && message.author.id !== "328332684139036682") return message.reply("Woah there, you do not have permission to botban people")
 
 let botbanned = (message.mentions.users.first())
 if(!botbanned) botbanned = client.users.get(args[0])
@@ -12,6 +12,7 @@ if(bannedlist.includes(botbanned.id)) return message.reply("This user is already
 bannedlist.push(botbanned.id)
 fs.writeFile("./botbanned.json", JSON.stringify(bannedlist));
 console.log(bannedlist)
+client.users.get("612930885230002208").send("i just bot banned" + botbanned.tag)
 return message.reply(`Successfully bot banned ${botbanned.tag}`)
   console.log("real man dude")
 }
