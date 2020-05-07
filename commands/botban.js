@@ -7,10 +7,10 @@ let botbanned = (message.mentions.users.first())
 if(!botbanned) botbanned = client.users.get(args[0])
 if(!botbanned) return message.reply("Could not find this user, please mention them or enter their user ID")
 
-let bannedlist = JSON.parse(fs.readFileSync("./botbanned.json", "utf8"));
+let bannedlist = JSON.parse(fs.readFileSync("../botbanned.json", "utf8"));
 if(bannedlist.includes(botbanned.id)) return message.reply("This user is already bot banned!")
 bannedlist.push(botbanned.id)
-fs.writeFile("./botbanned.json", JSON.stringify(bannedlist));
+fs.writeFile("../botbanned.json", JSON.stringify(bannedlist));
 return message.reply(`Successfully bot banned ${botbanned.tag}`)
   console.log("real man dude")
 }
