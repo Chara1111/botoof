@@ -87,7 +87,9 @@ client.on('message', async(message) => { //when message received
     if(auth.ownerID !== message.author.id && force) return message.channel.send('Bot is currently running in developer mode. Only developer can use bot commands. Please be patient.');
 
     if(limited.has(message.author.id)) return message.reply('You are being rate limited. Bot commands can be used once per 1.5 seconds.');
-
+    
+    if(botbanned.includes(message.author.id)) return message.reply("You are banned from using this bot.")
+    
     limited.add(message.author.id);
 
     setTimeout(function() {
@@ -95,7 +97,6 @@ client.on('message', async(message) => { //when message received
     }, 1500);
 
     else {
-        if(botbanned.includes(message.author.id)) return message.reply("You are banned from using this bot.")
     try {
         let commandFile = require(`./commands/${cmd}.js`);
         commandFile.run(client, message, args);
