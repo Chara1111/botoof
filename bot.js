@@ -6,7 +6,7 @@ const invites                 = {};
 const automod                 = require('./modules/automod');
 const limited                 = new Set();
 const logger                  = require('./modules/logger');
-const botbanned               = require('./botbanned.json')
+const botbanned               = JSON.parse(fs.readFileSync("./botbanned.json", "utf8"));
 
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
