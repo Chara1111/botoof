@@ -6,6 +6,7 @@ const invites                 = {};
 const automod                 = require('./modules/automod');
 const limited                 = new Set();
 const logger                  = require('./modules/logger');
+const fs                      = require("fs");
 const botbanned               = JSON.parse(fs.readFileSync("./botbanned.json", "utf8"));
 
 function sleep(ms) {
