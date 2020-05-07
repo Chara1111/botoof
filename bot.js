@@ -91,7 +91,9 @@ client.on('message', async(message) => { //when message received
     
     const botbanned = JSON.parse(fs.readFileSync("./botbanned.json", "utf8"));
     
-    if(botbanned.includes(message.author.id) && !message.content.startsWith("> ") && !message.content === ">") return message.reply("You are banned from using this bot.")
+    if(message.content === ">" || message.content.startsWith("> ")) return
+    
+    if(botbanned.includes(message.author.id)) return message.reply("You are banned from using this bot.")
     
     limited.add(message.author.id);
 
