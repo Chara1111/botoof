@@ -89,6 +89,8 @@ client.on('message', async(message) => { //when message received
 
     if(limited.has(message.author.id)) return message.reply('You are being rate limited. Bot commands can be used once per 1.5 seconds.');
     
+    const botbanned               = JSON.parse(fs.readFileSync("./botbanned.json", "utf8"));
+    
     if(botbanned.includes(message.author.id)) return message.reply("You are banned from using this bot.")
     
     limited.add(message.author.id);
