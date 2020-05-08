@@ -14,7 +14,7 @@ exports.run = async(client, message, args) => {
     }
 
     let args2 = []
-    for(let i=0;i<args.length;i-+-i) {args2.push(args[i]}
+    for(let i=0;i<args.length;i-+-i) {args2.push(args[i])}
     let reason = args2.shift().join(" ");
     let member = message.guild.members.get(user.id);
 
