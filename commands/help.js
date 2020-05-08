@@ -5,9 +5,9 @@ exports.run = (client, message, args) => {
     const embed = new d()
         .setTitle('Info about bot')
         .setColor('#847837')
-        .addField('Bot creator', 'dank_meme#0001')
-        .setDescription('Maybe you are searching for `>commands`, but if you want **help**, then you came to right place!')
-        .addField('I have issues, suggestions, want to look what\'s in new version', 'Issues, suggestions - to dank_meme#0001, `>info` - look info about new version')
+        .addField('Bot creator', 'dank_meme#0210')
+        .addField('Helpers', 'Fnction#0001(avatars), Clutch#0002(many ideas and spreading bot)')
+        .addField('I have found issues, or have suggestions', 'Issues, suggestions - to dank_meme#0210(if you cannot send me a DM, friend me), `>info` - look info about new version')
     if(!args[0]) return message.channel.send(embed)
     try {
         let cf = require(`./${args[0]}.js`);
