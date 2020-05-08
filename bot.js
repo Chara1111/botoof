@@ -30,6 +30,15 @@ client.on('ready', async() => {  // when bot is ready
     logger.botlog(client, 'ready');
 
     await client.user.setActivity(`${client.users.size} users`, {type: "WATCHING"});  // rich presence
+    
+    let abc = 1
+    
+    setInterval(async function() {
+        let stat = undefined
+        if(abc === 1) {abc = 0; stat = `${client.users.size} users` ;await client.user.setActivity(`${stat}`,{type: "WATCHING"});}
+        else {abc = 1; stat = `${client.guilds.size} servers`; await client.user.setActivity(`${stat}`,{type: "WATCHING"});}
+        logger.statuslog(client,stat)
+    }, 4000)
 
     client.guilds.forEach(g => {
         g.fetchInvites().then(guildInvites => {
@@ -39,11 +48,11 @@ client.on('ready', async() => {  // when bot is ready
     });
     sleep(1000);
 
-    setInterval(async function() {
+   /* setInterval(async function() {
         const statuses = ['Update v1.0.5!', 'smh i added automod and giveaways', `${client.users.size} users`];
         let stat = statuses[Math.floor(Math.random() * statuses.length)];
         logger.statuslog(client, stat);
-        await client.user.setActivity(`${stat}`, {type: "WATCHING"})}, 10000);
+        await client.user.setActivity(`${stat}`, {type: "WATCHING"})}, 10000);*/
 
     /*setInterval(function() {const channel = client.channels.get('646412588242042890');
     channel.send(`Daily activity check
